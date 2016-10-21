@@ -1,0 +1,240 @@
+*
+  box-sizing border-box
+  margin 0px
+.form
+  width 175px
+  max-height 100%
+  padding 0 0 20px 0
+  overflow-y scroll
+  vertical-align top
+  &__wrapper
+    display inline-block
+    vertical-align top
+  &__lang
+    padding 5px 2px
+    font-weight normal
+    label
+      margin-right 5px
+    select
+      float right
+  &__label
+    position relative
+    display block
+    margin 0 10px 0 10px
+    font-weight normal
+    &__detail
+      font-size 13px
+      color #666
+      text-align justify
+  &__input
+    display inline-block
+    width 70px
+    height 24px
+    margin 0px 5px 0px 10px
+    padding 0 0 0 4px
+    border 1px solid #999
+    cursor pointer
+    &__wrapper
+      margin 12px 0 12px 0
+    &__preview
+      display inline-block
+      border 1px solid #CCC
+      width 26px
+      height 26px
+      vertical-align middle
+  &__btn
+    display inline-block
+    width 95%
+    margin 10px 4px 0px 4px
+    background-color #333
+    color #FFF
+    white-space normal
+    &:hover, &:focus
+      color #FFF
+  &__advancedopt
+    padding 15px 0 15px 0px
+    &__toggle
+      padding 0 0 0 10px
+      cursor pointer
+      color #999
+.colorpicker
+  position absolute
+  top 0px
+  left 175px
+  z-index 1
+  border 2px solid #333
+  border-left-width 0px
+  border-top-width 0px
+  &__head
+    padding 5px
+    background-color #fff
+    text-align right
+    font-weight bold
+    &__colorname
+      float left
+      padding 0 0 0 10px
+    &__close
+      padding 5px
+      cursor pointer
+$tabHeight = 31px // calculated with padding of .tabhandler__title
+.tabhandler
+  display inline-block
+  width calc(100% - 175px)
+  &__title
+    display inline-block
+    padding 3px 25px
+    border 1px solid #333
+    border-bottom-width 0px
+    border-top-left-radius 5px
+    border-top-right-radius 5px
+    text-align center
+    font-weight bold
+    vertical-align bottom
+    cursor pointer
+    vertical-align center
+    &:hover
+      background-color #eee
+    &.active
+      padding 5px 25px
+      color #3a3a67
+      background-color #ddd
+  &__content
+    width 100%
+.preview, .liveinstance
+  width 100%
+$tracimHeaderHeight = 50px
+$tabPlusTracimHeaderHeight = $tracimHeaderHeight + $tabHeight
+.tracim
+  width 100%
+  &__header
+    width 100%
+    height $tracimHeaderHeight
+    border-bottom 1px solid #eee
+    &__logo
+      display inline-block
+      width 70px
+      margin-left 4px
+    &__link
+      display inline-block
+      padding 13px 15px
+      color #ddd
+      cursor pointer
+      &:hover
+        background-color #eee
+      .fa
+        padding 5px
+    &__linkright
+      @extends .tracim__header__link
+      float right
+      .fa
+        font-size 18px
+    &__linkrightform
+      @extends .tracim__header__linkright
+      padding 7px 10px
+      cursor auto
+      &:hover
+        background-color inherit
+      input
+        padding 5px
+        border-radius 5px
+  &__sidebar-left
+    display inline-block
+    width 25%
+    height "calc(100% - %s)" % $tabPlusTracimHeaderHeight
+    border-right 1px solid #BBB
+    vertical-align top
+    &__btntoggle
+      text-align right
+      padding 15px
+      color #eee
+    &__menu
+      padding 15px 25px 10px 25px
+      &__title
+        padding 0 0 10px 0
+        color #999
+        font-size 18px
+      &__item
+        padding 3px 0
+        color #ddd
+        &__submenu
+          @extends .tracim__sidebar-left__menu__item
+          padding-left 15px
+          & > .tracim__sidebar-left__menu__item__iconpicto
+            color #cccc00
+        &__iconpicto
+          margin-right 5px
+        &__iconmenu
+          margin-right 15px
+          transform rotate(-45deg)
+          color #ddd
+        &.open > .tracim__sidebar-left__menu__item__iconmenu
+          margin-right 15px
+          transform rotate(-90deg)
+          color #ddd
+  &__content
+    display inline-block
+    width 58%
+    height "calc(100% - %s)" % $tabPlusTracimHeaderHeight
+    vertical-align top
+    border 1px
+    &__header
+      width 100%
+      padding 20px 20px 10px 20px
+      border-bottom 1px solid #ccc
+      &__title
+        font-size 30px
+        color #428bca
+        border-bottom 4px solid #eee
+      &__subtitle
+        font-size 14px
+        color #999
+    &__boostrap__item
+      margin 10px 0
+      padding 15px
+      .btn
+        margin 0 5px
+      p
+        padding 5px
+      &__title
+        font-size 18px
+  &__sidebar-right
+    display inline-block
+    width 17%
+    height "calc(100% - %s)" % $tabPlusTracimHeaderHeight
+    border-left 1px solid #bbb
+    padding 20px 20px
+    &__btngroup
+      &__btn
+        width 100%
+        padding 6px 12px
+        border 1px solid #ccc
+        border-top-width 0px
+        background-color #fff
+        color #333
+        font-size 18px
+        text-align left
+        &:hover
+          background-color #e6e6e6
+          border-color #adadad
+        &:first-child
+          border-top 1px solid #ccc
+          border-top-left-radius 4px
+          border-top-right-radius 4px
+        &:last-child
+          border-bottom-left-radius 4px
+          border-bottom-right-radius 4px
+        .fa
+          padding 0 10px 0 0
+          color #999
+          font-size 21px
+    &__title
+      padding 20px 0px
+      font-size 24px
+      color #555
+      .fa
+        padding 0 10px
+        font-size 21px
+.traciminstance
+  width 100%
+  height "calc(100% - %s)" % $tabHeight
+  border none

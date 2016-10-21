@@ -1,0 +1,48 @@
+{
+  "name": "tracim_theme_ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.jsx",
+  "scripts": {
+    "start": "webpack-dev-server --colors --inline --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@gitlab.algoo.fr:10022/come/tracim_theme_ui.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-object-rest-spread": "^6.16.0",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "css-loader": "^0.25.0",
+    "file-loader": "^0.9.0",
+    "jshint": "^2.9.3",
+    "jshint-loader": "^0.8.3",
+    "node-libs-browser": "^1.0.0",
+    "script-loader": "^0.7.0",
+    "style-loader": "^0.13.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^2.3.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2"
+  },
+  "dependencies": {
+    "babel-preset-react": "^6.16.0",
+    "bootstrap": "^3.3.7",
+    "classnames": "^2.2.5",
+    "font-awesome": "^4.6.3",
+    "react": "^15.3.2",
+    "react-bootstrap": "^0.30.5",
+    "react-color": "^2.3.2",
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.6.0",
+    "whatwg-fetch": "^1.0.0"
+  }
+}
