@@ -82,8 +82,10 @@
       cursor pointer
 $tabHeight = 31px // calculated with padding of .tabhandler__title
 .tabhandler
+  position relative
   display inline-block
   width calc(100% - 175px)
+  height 100%
   &__title
     display inline-block
     padding 3px 25px
@@ -95,7 +97,6 @@ $tabHeight = 31px // calculated with padding of .tabhandler__title
     font-weight bold
     vertical-align bottom
     cursor pointer
-    vertical-align center
     &:hover
       background-color #eee
     &.active
@@ -103,7 +104,9 @@ $tabHeight = 31px // calculated with padding of .tabhandler__title
       color #3a3a67
       background-color #ddd
   &__content
+    position absolute
     width 100%
+    height "calc(100% - %s)" % $tabHeight
 .preview, .liveinstance
   width 100%
 $tracimHeaderHeight = 50px
@@ -143,7 +146,7 @@ $tracimHeaderHeight = 50px
   &__sidebar-left
     display inline-block
     width 25%
-    height "calc(100% - %s)" % ($tracimHeaderHeight + $tabHeight)
+    height "calc(100% - %s)" % $tracimHeaderHeight
     border-right 1px solid #BBB
     vertical-align top
     &__btntoggle
@@ -177,7 +180,7 @@ $tracimHeaderHeight = 50px
   &__content
     display inline-block
     width 58%
-    height "calc(100% - %s)" % ($tracimHeaderHeight + $tabHeight)
+    height "calc(100% - %s)" % $tracimHeaderHeight
     vertical-align top
     border 1px
     &__header
@@ -203,7 +206,7 @@ $tracimHeaderHeight = 50px
   &__sidebar-right
     display inline-block
     width 17%
-    height "calc(100% - %s)" % ($tracimHeaderHeight + $tabHeight)
+    height "calc(100% - %s)" % $tracimHeaderHeight
     border-left 1px solid #bbb
     padding 20px 20px
     &__btngroup
@@ -239,5 +242,5 @@ $tracimHeaderHeight = 50px
         font-size 21px
 .traciminstance
   width 100%
-  height "calc(100% - %s)" % $tabHeight
+  height 100%
   border none

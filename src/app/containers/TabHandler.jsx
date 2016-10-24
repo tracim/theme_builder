@@ -4,6 +4,7 @@ import classnames from "classnames"
 
 import Preview from "../components/Preview.jsx"
 import TracimInstance from "../components/TracimInstance.jsx"
+import OneTab from "../components/OneTab.jsx"
 
 import { switchTab } from "../action-creators.js"
 
@@ -14,12 +15,6 @@ export class TabHandler extends React.Component {
   render() {
 
     const { activeTab, urlTracimInstance, colorList, dispatch } = this.props
-
-    const tabTitleClass0 = classnames('tabhandler__title', activeTab === 0 ? 'active' : null)
-    const tabTitleClass1 = classnames('tabhandler__title', activeTab === 1 ? 'active' : null)
-
-    const tabContentClass0 = {display: activeTab !== 0 ? 'none' : 'block'}
-    const tabContentClass1 = {display: activeTab !== 1 ? 'none' : 'block'}
 
     const mapColorForPreview = {
       brandPrimary:   colorList.find((item) => item.name === 'brand-primary').hex,
@@ -33,20 +28,19 @@ export class TabHandler extends React.Component {
     return (
       <div className="tabhandler">
 
-        <div className={tabTitleClass0} onClick={() => dispatch(switchTab(0))}>
+        <div className={classnames('tabhandler__title', activeTab === 0 && 'active')} onClick={() => dispatch(switchTab(0))}>
           { __().tabTitle0 }
         </div>
-        <div className={tabTitleClass1} onClick={() => dispatch(switchTab(1))}>
+        <div className={classnames('tabhandler__title', activeTab === 1 && 'active')} onClick={() => dispatch(switchTab(1))}>
           { __().tabTitle1 }
         </div>
 
-        <div className="tabhandler__content" style={tabContentClass0}>
+        <OneTab active={activeTab === 0}>
           <Preview propColor={mapColorForPreview} />
-        </div>
-
-        <div className="tabhandler__content" style={tabContentClass1}>
+        </OneTab>
+        <OneTab active={activeTab === 1}>
           <TracimInstance urlTracimInstance={urlTracimInstance} />
-        </div>
+        </OneTab>
 
       </div>
     )

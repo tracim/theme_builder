@@ -1,13 +1,11 @@
 import React from "react"
 
-export class TracimInstance extends React.Component {
-  render() {
-    return (
-      <div>
-        <iframe className="traciminstance" src={this.props.urlTracimInstance}></iframe>
-      </div>
-    )
-  }
+export function TracimInstance (props) {
+  return (
+    <div>
+      <iframe className="traciminstance" src={props.urlTracimInstance}></iframe>
+    </div>
+  )
 }
 
 TracimInstance.propTypes = {

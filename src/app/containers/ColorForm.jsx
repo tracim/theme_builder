@@ -13,10 +13,10 @@ export class ColorForm extends React.Component {
 
   constructor() {
     super()
-    this.buildColor = this.buildColor.bind(this)
   }
 
-  buildColor() {
+  // the syntaxe bellow is viable thx to babel plugin transform-class-properties. It avoids having to bind this to the function in the constructor
+  buildColor = () => {
     // if (self.fetch) console.log('fetch is native')
     // else console.log('fetch is polyfill')
 
@@ -47,15 +47,6 @@ export class ColorForm extends React.Component {
 
     const { colorList, activeLang, showAdvancedOpt, displayColorPicker, dispatch } = this.props
 
-    const compColorList = colorList.map((item, index) => item.advancedOpt === false
-      ? <ColorItem colorItem={item} key={index} />
-      : null
-    )
-    const compColorListAdvOpt = colorList.map((item, index) => item.advancedOpt === true
-      ? <ColorItem colorItem={item} key={index} />
-      : null
-    )
-
     return (
       <div className="form__wrapper">
         <div className="form">
@@ -71,22 +62,22 @@ export class ColorForm extends React.Component {
           <button id="resetColors" className="form__btn btn" onClick={() => dispatch(resetColor())}>
             { __().btnReset }
           </button>
-          <button id="buildColors" className="form__btn btn btnBuild" onClick={this.buildColors}>
+          <button id="buildColors" className="form__btn btn btnBuild" onClick={this.buildColor}>
             { __().btnValidate }
           </button>
 
-          { compColorList }
+          { colorList.map((item, i) => !item.advancedOpt && <ColorItem colorItem={item} key={i} />) }
 
           <div className="form__advancedopt">
             <div className="form__advancedopt__toggle" onClick={() => dispatch(toggleAdvOpt())}>
               { __().btnAdvOpt }{ showAdvancedOpt ? ' v' : ' x' }
             </div>
 
-            { showAdvancedOpt ? compColorListAdvOpt : null }
+            { showAdvancedOpt && colorList.map((item, i) => item.advancedOpt && <ColorItem colorItem={item} key={i} />) }
 
           </div>
         </div>
-        { displayColorPicker ? <ColorPicker /> : null }
+        { displayColorPicker && <ColorPicker /> }
       </div>
     )
   }
