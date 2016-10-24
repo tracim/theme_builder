@@ -1,16 +1,17 @@
 import React from "react"
-import { connect } from "react-redux"
-
-import { updateTracimInstance } from "../action-creators.js"
 
 export class TracimInstance extends React.Component {
   render() {
     return (
-      <iframe className="traciminstance" src={this.props.urlTracimInstance}></iframe>
+      <div>
+        <iframe className="traciminstance" src={this.props.urlTracimInstance}></iframe>
+      </div>
     )
   }
 }
 
-const mapStateToProps = ({urlTracimInstance}) => ({urlTracimInstance})
+TracimInstance.propTypes = {
+  urlTracimInstance: React.PropTypes.string
+}
 
-export default connect(mapStateToProps)(TracimInstance)
+export default TracimInstance

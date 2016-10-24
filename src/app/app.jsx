@@ -6,7 +6,7 @@ import Bootstrap from 'bootstrap/dist/css/bootstrap.css'
 require('./css/style.styl')
 require('./font/font-awesome-4.6.3/css/font-awesome.css')
 
-import ThemeChanger from './components/ThemeChanger.jsx'
+import ThemeChanger from './containers/ThemeChanger.jsx'
 
 import store from "./store.js"
 

@@ -1,21 +1,11 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from "react"
 
 import __ from "../trad.js"
 
 export class Preview extends React.Component {
 
   render() {
-    const { colorList } = this.props
-
-    const propColor = {
-      brandPrimary:   colorList.find((item) => item.name === 'brand-primary').hex,
-      brandSecondary: colorList.find((item) => item.name === 'brand-secondary').hex,
-      brandSuccess:   colorList.find((item) => item.name === 'brand-success').hex,
-      brandInfo:      colorList.find((item) => item.name === 'brand-info').hex,
-      brandWarning:   colorList.find((item) => item.name === 'brand-warning').hex,
-      brandDanger:    colorList.find((item) => item.name === 'brand-danger').hex,
-    }
+    const { propColor } = this.props
 
     const style = {
       styleHeader: {
@@ -66,7 +56,7 @@ export class Preview extends React.Component {
               { __().previewHome }
             </div>
             <div className="tracim__header__link">
-              <i className="fa fa-calendar fa-lg" title=""></i>
+              <i className="fa fa-calendar"></i>
               { __().previewCalendar }
             </div>
             <div className="tracim__header__linkright">
@@ -188,9 +178,8 @@ export class Preview extends React.Component {
 
 }
 
-
-function mapStateToProps({ lang, color }) {
-  return { lang: lang, colorList: color }
+Preview.propTypes = {
+  propColor: React.PropTypes.object
 }
 
-export default connect(mapStateToProps)(Preview)
+export default Preview
