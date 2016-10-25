@@ -1,4 +1,4 @@
-import { UPDATE_TRACIM_INSTANCE } from "../action-creators.js"
+import { UPDATE_TRACIM_INSTANCE } from '../action-creators.js'
 
 export default function tracimInstance (state = '', action) {
   switch (action.type) {

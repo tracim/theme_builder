@@ -1,4 +1,4 @@
-import { SWITCH_TAB } from "../action-creators.js"
+import { SWITCH_TAB } from '../action-creators.js'
 
 export default function tab (state = [], action) {
   switch (action.type) {

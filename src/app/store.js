@@ -1,68 +1,68 @@
-import { createStore } from "redux"
-import coreReducer from "./reducers/index.js"
+import { createStore } from 'redux'
+import coreReducer from './reducers/index.js'
 
-//TODO: load config.json here ???
+// TODO: load config.json here ???
 
 export const defaultStore = {
   lang: 'fr',
   showAdvancedOpt: false,
   activeTab: 0,
-  urlTracimInstance: "http://algoo.trac.im/",
+  urlTracimInstance: 'http://algoo.trac.im/',
   color: [
     {
-      name: "brand-primary",
-      hex: "#555555",
+      name: 'brand-primary',
+      hex: '#555555',
       label: {
-        fr: "Couleur principale",
-        en: "Primary color",
+        fr: 'Couleur principale',
+        en: 'Primary color'
       },
-      advancedOpt: false,
+      advancedOpt: false
     }, {
-      name: "brand-secondary",
-      hex: "#f5f5f5",
+      name: 'brand-secondary',
+      hex: '#f5f5f5',
       label: {
-        fr: "Couleur secondaire",
-        en: "Secondary color",
+        fr: 'Couleur secondaire',
+        en: 'Secondary color'
       },
-      advancedOpt: false,
+      advancedOpt: false
     }, {
-      name: "brand-success",
-      hex: "#5cb85c",
+      name: 'brand-success',
+      hex: '#5cb85c',
       label: {
-        fr: "Messages de succès",
-        en: "Success messages",
+        fr: 'Messages de succès',
+        en: 'Success messages'
       },
-      advancedOpt: true,
+      advancedOpt: true
     }, {
-      name: "brand-info",
-      hex: "#5bc0de",
+      name: 'brand-info',
+      hex: '#5bc0de',
       label: {
         fr: "Messages d'informations",
-        en: "Informative messages",
+        en: 'Informative messages'
       },
-      advancedOpt: true,
+      advancedOpt: true
     }, {
-      name: "brand-warning",
-      hex: "#f0ad4e",
+      name: 'brand-warning',
+      hex: '#f0ad4e',
       label: {
         fr: "Messages d'alertes",
-        en: "Alert messages",
+        en: 'Alert messages'
       },
-      advancedOpt: true,
+      advancedOpt: true
     }, {
-      name: "brand-danger",
-      hex: "#d9534f",
+      name: 'brand-danger',
+      hex: '#d9534f',
       label: {
-        fr: "Messages importants",
-        en: "Important messages",
+        fr: 'Messages importants',
+        en: 'Important messages'
       },
-      advancedOpt: true,
+      advancedOpt: true
     }
   ],
   colorPicker: {
     display: false,
-    name: "",
-    hex: "#ffffff",
+    name: '',
+    hex: '#ffffff'
   }
 }
 

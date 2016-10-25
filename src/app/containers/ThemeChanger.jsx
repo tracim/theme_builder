@@ -1,10 +1,10 @@
-import React from "react"
+import React from 'react'
 
-import ColorForm from "./ColorForm.jsx"
-import TabHandler from "./TabHandler.jsx"
+import ColorForm from './ColorForm.jsx'
+import TabHandler from './TabHandler.jsx'
 
 class ThemeChanger extends React.Component {
-  render() {
+  render () {
     return (
       <div>
         <ColorForm />

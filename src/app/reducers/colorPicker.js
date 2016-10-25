@@ -6,20 +6,20 @@ export default function colorPicker (state = [], action) {
       return {
         display: true,
         name: action.name,
-        hex: action.hex,
+        hex: action.hex
       }
 
     case CLOSE_PICKER:
       return {
         ...state,
-        display: false,
+        display: false
       }
 
     case UPDATE_INIT:
       return {
         ...state,
         name: action.name,
-        hex: action.hex,
+        hex: action.hex
       }
 
     default:

@@ -1,4 +1,4 @@
-import { CHANGE_LANG } from "../action-creators.js"
+import { CHANGE_LANG } from '../action-creators.js'
 
 export default function lang (state = [], action) {
   switch (action.type) {
