@@ -8,6 +8,7 @@ import __ from "../trad.js"
 export class ColorPicker extends React.Component {
 
   render() {
+
     const { colorName, colorHex, dispatch } = this.props
 
     return (
@@ -34,7 +35,7 @@ function mapStateToProps ({ lang, colorPicker }) {
   return {
     lang: lang,
     colorName: colorPicker.name,
-    colorHex: colorPicker.hex
+    colorHex: colorPicker.hex,
   }
 }
 

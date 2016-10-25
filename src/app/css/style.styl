@@ -10,37 +10,41 @@
   &__wrapper
     display inline-block
     vertical-align top
+    text-align left
   &__lang
     padding 5px 2px
     font-weight normal
     label
-      margin-right 5px
+      margin 0 3px 0 3px
     select
       float right
   &__label
     position relative
     display block
-    margin 0 10px 0 10px
+    margin 0 0 3px 10px
     font-weight normal
     &__detail
       font-size 13px
       color #666
-      text-align justify
   &__input
-    display inline-block
-    width 70px
-    height 24px
-    margin 0px 5px 0px 10px
-    padding 0 0 0 4px
-    border 1px solid #999
-    cursor pointer
+    margin 0 10px 0 0
+    text-align right
+    &__selector
+      display inline-block
+      width 70px
+      height 24px
+      margin 0px 5px 0px 0px
+      border 1px solid #999
+      cursor pointer
+      text-align center
+      font-family monospace
     &__wrapper
-      margin 12px 0 12px 0
+      margin 12px 0 15px 0
     &__preview
       display inline-block
       border 1px solid #CCC
-      width 26px
-      height 26px
+      width 24px
+      height 24px
       vertical-align middle
   &__btn
     display inline-block
@@ -58,9 +62,10 @@
   &__advancedopt
     padding 15px 0 15px 0px
     &__toggle
-      padding 0 0 0 10px
+      padding 0 10px 0 10px
       cursor pointer
       color #999
+      text-align right
 .colorpicker
   position absolute
   top 0px
@@ -244,3 +249,11 @@ $tracimHeaderHeight = 50px
   width 100%
   height 100%
   border none
+.modal-dialog
+  margin-top 120px
+.dialog__btn__validate
+  color #fff
+  background-color #333
+  border-color #333
+  &:hover, &:active, &:active:hover
+    @extends .dialog__btn__validate

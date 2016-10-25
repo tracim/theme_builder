@@ -1,7 +1,9 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import ColorItem from './ColorItem.jsx'
-import ColorPicker from './ColorPicker.jsx'
+import React from "react"
+import { connect } from "react-redux"
+import ColorItem from "./ColorItem.jsx"
+import ColorPicker from "./ColorPicker.jsx"
+import ResetColorDialog from "../components/Dialog.jsx"
+import BuildColorDialog from "../components/Dialog.jsx"
 
 import { resetColor, changeLang, toggleAdvOpt } from "../action-creators.js"
 
@@ -13,10 +15,24 @@ export class ColorForm extends React.Component {
 
   constructor() {
     super()
+
+    this.state = {
+      displayResetDialog: false,
+      displayBuildDialog: false,
+    }
   }
 
-  // the syntaxe bellow is viable thx to babel plugin transform-class-properties. It avoids having to bind this to the function in the constructor
-  buildColor = () => {
+  handleResetColor = () => {
+    this.props.dispatch(resetColor())
+    this.handleCloseDialog()
+  }
+
+  handleCloseDialog     = () => this.setState({ displayResetDialog: false, displayBuildDialog: false, })
+  handleOpenResetDialog = () => this.setState({ displayResetDialog: true,  displayBuildDialog: false, })
+  handleOpenBuildDialog = () => this.setState({ displayResetDialog: false, displayBuildDialog: true,  })
+
+  // the syntaxe bellow is viable thx to babel plugin transform-class-properties. It avoids having to bind "this" to the function in the class' constructor
+  handleBuildColor = () => {
     // if (self.fetch) console.log('fetch is native')
     // else console.log('fetch is polyfill')
 
@@ -59,10 +75,10 @@ export class ColorForm extends React.Component {
               <option value="fr">Français</option>
             </select>
           </div>
-          <button id="resetColors" className="form__btn btn" onClick={() => dispatch(resetColor())}>
+          <button id="resetColors" className="form__btn btn" onClick={this.handleOpenResetDialog}>
             { __().btnReset }
           </button>
-          <button id="buildColors" className="form__btn btn btnBuild" onClick={this.buildColor}>
+          <button id="buildColors" className="form__btn btn btnBuild" onClick={this.handleOpenBuildDialog}>
             { __().btnValidate }
           </button>
 
@@ -70,27 +86,38 @@ export class ColorForm extends React.Component {
 
           <div className="form__advancedopt">
             <div className="form__advancedopt__toggle" onClick={() => dispatch(toggleAdvOpt())}>
-              { __().btnAdvOpt }{ showAdvancedOpt ? ' v' : ' x' }
+              { showAdvancedOpt ? 'v' : 'x' }{ __().btnAdvOpt }
             </div>
 
             { showAdvancedOpt && colorList.map((item, i) => item.advancedOpt && <ColorItem colorItem={item} key={i} />) }
 
           </div>
+
+          <ResetColorDialog
+            display={this.state.displayResetDialog}
+            msg={__().dialogReset}
+            onValidate={this.handleResetColor}
+            onCancel={this.handleCloseDialog}
+          />
+          <BuildColorDialog
+            display={this.state.displayBuildDialog}
+            msg={__().dialogBuild}
+            onValidate={this.handleBuildColor}
+            onCancel={this.handleCloseDialog}
+          />
         </div>
-        { displayColorPicker && <ColorPicker /> }
+        { displayColorPicker && <ColorPicker /> } {/* shouldnn't the boolean be a local state instead of from the store ? */}
       </div>
     )
   }
 
 }
 
-const mapStateToProps = ({ lang, showAdvancedOpt, color, colorPicker:{display, name, hex} }) => ({
+const mapStateToProps = ({ lang, showAdvancedOpt, color, colorPicker:{display} }) => ({
   activeLang: lang,
   showAdvancedOpt: showAdvancedOpt,
   colorList: color,
   displayColorPicker: display,
-  initColorPickerName: name,
-  initColorPickerHex: hex,
 })
 
 export default connect(mapStateToProps)(ColorForm)

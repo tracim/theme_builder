@@ -23,10 +23,12 @@ export class ColorItem extends React.Component {
             {activeLang === 'en' ? colorItem.label.en : null}
           </div>
         </label>
-        <div className="form__input" onClick={() => dispatch(openPicker(colorItem.name, colorItem.hex))}>
-          {colorItem.hex}
+        <div className="form__input">
+          <div className="form__input__selector" onClick={() => dispatch(openPicker(colorItem.name, colorItem.hex))}>
+            {colorItem.hex}
+          </div>
+          <div className="form__input__preview" style={styleFormInputPreview}></div>
         </div>
-        <div className="form__input__preview" style={styleFormInputPreview}></div>
       </div>
     )
   }

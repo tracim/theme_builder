@@ -13,48 +13,48 @@ export const defaultStore = {
       name: "brand-primary",
       hex: "#555555",
       label: {
-        fr: "couleur principale",
-        en: "primary color",
+        fr: "Couleur principale",
+        en: "Primary color",
       },
       advancedOpt: false,
     }, {
       name: "brand-secondary",
       hex: "#f5f5f5",
       label: {
-        fr: "couleur secondaire",
-        en: "secondary color",
+        fr: "Couleur secondaire",
+        en: "Secondary color",
       },
       advancedOpt: false,
     }, {
       name: "brand-success",
       hex: "#5cb85c",
       label: {
-        fr: "couleur des messages de succès",
-        en: "color for success messages",
+        fr: "Messages de succès",
+        en: "Success messages",
       },
       advancedOpt: true,
     }, {
       name: "brand-info",
       hex: "#5bc0de",
       label: {
-        fr: "couleur des messages d'informations",
-        en: "color for informative messages",
+        fr: "Messages d'informations",
+        en: "Informative messages",
       },
       advancedOpt: true,
     }, {
       name: "brand-warning",
       hex: "#f0ad4e",
       label: {
-        fr: "couleur des messages d'alertes",
-        en: "color for alert messages",
+        fr: "Messages d'alertes",
+        en: "Alert messages",
       },
       advancedOpt: true,
     }, {
       name: "brand-danger",
       hex: "#d9534f",
       label: {
-        fr: "couleur des messages importants",
-        en: "color for important messages",
+        fr: "Messages importants",
+        en: "Important messages",
       },
       advancedOpt: true,
     }
