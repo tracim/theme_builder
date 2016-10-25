@@ -1,19 +1,26 @@
 module.exports = {
-  entry: ['babel-polyfill', 'whatwg-fetch', './src/app/app.jsx'],
+  entry: ["babel-polyfill", "whatwg-fetch", "./src/app/app.jsx"],
   output: {
-    path: 'src/dist',
-    filename: 'bundle.js',
-    publicPath: 'src/dist',
+    path: "src/dist",
+    filename: "bundle.js",
+    publicPath: "src/dist",
   },
   watch: true,
   module: {
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        loader: 'standard',
+        exclude: /node_modules/,
+      }
+    ],
     loaders: [
       {
         test: [/\.js$/, /\.jsx$/],
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015'],
+          presets: ["react", "es2015"],
           plugins: ["transform-object-rest-spread", "transform-class-properties"],
         }
       }, {
@@ -21,28 +28,28 @@ module.exports = {
         loader: "style-loader!css-loader",
       }, {
         test: /\.styl$/,
-        loader: 'style-loader!css-loader!stylus-loader',
+        loader: 'style-loader!css-loader!stylus-loader', // loaders order apply from right to left
       }, {
         test: /\.png$/,
-        loader: "url-loader?limit=100000",
+        loader: "url-loader?mimetype=image/png&limit=100000",
       }, {
         test: /\.jpg$/,
         loader: "file-loader",
       }, {
         test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?limit=10000&mimetype=application/font-woff",
+        loader: "url-loader?limit=10000&mimetype=application/font-woff",
       }, {
         test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?limit=10000&mimetype=application/font-woff",
+        loader: "url-loader?limit=10000&mimetype=application/font-woff",
       }, {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?limit=10000&mimetype=application/octet-stream",
+        loader: "url-loader?limit=10000&mimetype=application/octet-stream",
       }, {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "file",
+        loader: "file-loader",
       }, {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?limit=10000&mimetype=image/svg+xml",
+        loader: "url-loader?limit=10000&mimetype=image/svg+xml",
       }
     ]
   },

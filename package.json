@@ -26,6 +26,8 @@
     "jshint-loader": "^0.8.3",
     "node-libs-browser": "^1.0.0",
     "script-loader": "^0.7.0",
+    "standard": "^8.4.0",
+    "standard-loader": "^5.0.0",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.1",
