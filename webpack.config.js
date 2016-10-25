@@ -1,3 +1,5 @@
+const path = require("path")
+
 module.exports = {
   entry: ["babel-polyfill", "whatwg-fetch", "./src/app/app.jsx"],
   output: {
@@ -10,15 +12,20 @@ module.exports = {
     preLoaders: [
       {
         test: /\.jsx?$/,
-        loader: 'standard',
+        loader: "standard",
         exclude: /node_modules/,
       }
     ],
     loaders: [
       {
         test: [/\.js$/, /\.jsx$/],
-        exclude: /node_modules/,
-        loader: 'babel-loader',
+        include: [
+          path.resolve(__dirname, "src/app"),
+          path.resolve(__dirname, "src/app/components"),
+          path.resolve(__dirname, "src/app/components"),
+          path.resolve(__dirname, "src/app/reducers"),
+        ],
+        loader: "babel-loader",
         query: {
           presets: ["react", "es2015"],
           plugins: ["transform-object-rest-spread", "transform-class-properties"],
@@ -54,7 +61,14 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ["", ".js", ".jsx"],
   }
-
+  /*
+  TODO : config to test
+  {
+     test: /\.(jpg|jpeg|gif|png|ico)$/,
+     exclude: /node_modules/,
+     loader:'file-loader?name=img/[path][name].[ext]&context=./app/images'
+  }
+  */
 }

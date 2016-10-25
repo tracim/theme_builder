@@ -10,8 +10,8 @@
     "type": "git",
     "url": "ssh://git@gitlab.algoo.fr:10022/come/tracim_theme_ui.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["Tracim"],
+  "author": "Côme Huguiès",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.17.0",
