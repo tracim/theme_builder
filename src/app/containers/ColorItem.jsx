@@ -1,12 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { openPicker } from '../action-creators.js'
+import { openPicker, closePicker } from '../action-creators.js'
+
+import store from '../store.js'
 
 export class ColorItem extends React.Component {
 
+  handleOpenPicker = () => {
+    const { colorItem, dispatch } = this.props
+
+    if (store.getState().colorPicker.name === colorItem.name) dispatch(closePicker())
+    else dispatch(openPicker(colorItem.name, colorItem.hex))
+  }
+
   render () {
-    const { activeLang, colorItem, dispatch } = this.props
+    const { activeLang, colorItem } = this.props
 
     const styleFormInputPreview = {
       backgroundColor: colorItem.hex
@@ -22,7 +31,7 @@ export class ColorItem extends React.Component {
           </div>
         </label>
         <div className='form__input'>
-          <div className='form__input__selector' onClick={() => dispatch(openPicker(colorItem.name, colorItem.hex))}>
+          <div className='form__input__selector' onClick={this.handleOpenPicker}>
             {colorItem.hex}
           </div>
           <div className='form__input__preview' style={styleFormInputPreview} />

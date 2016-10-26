@@ -11,8 +11,9 @@ export default function colorPicker (state = [], action) {
 
     case CLOSE_PICKER:
       return {
-        ...state,
-        display: false
+        display: false,
+        name: '',
+        hex: '#ffffff'
       }
 
     case UPDATE_INIT:

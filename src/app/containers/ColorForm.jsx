@@ -110,8 +110,8 @@ export class ColorForm extends React.Component {
         </div>
         <ReactCSSTransitionGroup
           transitionName='colorpickerAnim'
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}>
+          transitionEnterTimeout={300}
+          transitionLeaveTimeout={150}>
           { displayColorPicker && <ColorPicker key='colorPicker' /> }
         </ReactCSSTransitionGroup>
       </div>

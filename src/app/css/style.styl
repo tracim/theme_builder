@@ -102,12 +102,12 @@
       top -300px
       &.colorpickerAnim-enter-active
         top 0px
-        transition: top 500ms ease-in
+        transition: top 300ms ease-in // duration must match transitionEnterTimeout in ColorForm.jsx
     &-leave
       top 0px
       &.colorpickerAnim-leave-active
         top -300px
-        transition top 300ms ease-in
+        transition top 150ms ease-in // duration must match transitionLeaveTimeout in ColorForm.jsx
 $tabHeight = 31px // calculated with padding of .tabhandler__title
 .tabhandler
   position relative
