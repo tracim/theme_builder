@@ -26,4 +26,10 @@ export function Dialog (props) {
   )
 }
 
+Dialog.propTypes = {
+  display: React.PropTypes.bool.isRequired,
+  onCancel: React.PropTypes.func.isRequired,
+  onValidate: React.PropTypes.func.isRequired
+}
+
 export default Dialog

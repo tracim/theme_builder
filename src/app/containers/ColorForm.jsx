@@ -88,8 +88,13 @@ export class ColorForm extends React.Component {
             <div className='form__advancedopt__toggle' onClick={() => dispatch(toggleAdvOpt())}>
               { showAdvancedOpt ? 'v' : 'x' }{ __().btnAdvOpt }
             </div>
+            <ReactCSSTransitionGroup transitionName='advOptLineAnim' transitionEnterTimeout={300} transitionLeaveTimeout={200}>
+              { showAdvancedOpt && <div className='advOptLineAnim' /> }
+            </ReactCSSTransitionGroup>
 
-            { showAdvancedOpt && colorList.map((item, i) => item.advancedOpt && <ColorItem colorItem={item} key={i} />) }
+            <div className='form__advancedopt__list'>
+              { showAdvancedOpt && colorList.map((item, i) => item.advancedOpt && <ColorItem colorItem={item} key={i} />) }
+            </div>
 
           </div>
 
@@ -108,10 +113,7 @@ export class ColorForm extends React.Component {
             onCancel={this.handleCloseDialog}
           />
         </div>
-        <ReactCSSTransitionGroup
-          transitionName='colorpickerAnim'
-          transitionEnterTimeout={300}
-          transitionLeaveTimeout={150}>
+        <ReactCSSTransitionGroup transitionName='colorpickerAnim' transitionEnterTimeout={300} transitionLeaveTimeout={10000}>
           { displayColorPicker && <ColorPicker key='colorPicker' /> }
         </ReactCSSTransitionGroup>
       </div>
@@ -119,7 +121,7 @@ export class ColorForm extends React.Component {
   }
 
 }
-//
+
 const mapStateToProps = ({ lang, showAdvancedOpt, color, colorPicker: {display} }) => ({
   activeLang: lang,
   showAdvancedOpt: showAdvancedOpt,

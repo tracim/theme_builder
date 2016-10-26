@@ -10,7 +10,7 @@ export function OneTab (props) {
 }
 
 OneTab.propTypes = {
-  active: React.PropTypes.bool
+  active: React.PropTypes.bool.isRequired
 }
 
 export default OneTab

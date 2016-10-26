@@ -24,7 +24,6 @@ export class ColorItem extends React.Component {
     return (
       <div className='form__input__wrapper'>
         <label className='form__label'>
-          {/* @{this.props.colorItem.name} */}
           <div className='form__label__detail'>
             {activeLang === 'fr' ? colorItem.label.fr : null}
             {activeLang === 'en' ? colorItem.label.en : null}
@@ -40,10 +39,6 @@ export class ColorItem extends React.Component {
     )
   }
 
-}
-
-ColorItem.propTypes = {
-  value: React.PropTypes.object
 }
 
 const mapStateToProps = ({ lang }) => ({ activeLang: lang })

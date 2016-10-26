@@ -9,7 +9,7 @@ export function TracimInstance (props) {
 }
 
 TracimInstance.propTypes = {
-  urlTracimInstance: React.PropTypes.string
+  urlTracimInstance: React.PropTypes.string.isRequired
 }
 
 export default TracimInstance

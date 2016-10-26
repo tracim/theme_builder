@@ -175,7 +175,7 @@ export function Preview (props) {
 }
 
 Preview.propTypes = {
-  propColor: React.PropTypes.object
+  propColor: React.PropTypes.object.isRequired
 }
 
 export default Preview
