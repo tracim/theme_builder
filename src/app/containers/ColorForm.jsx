@@ -3,12 +3,13 @@ import { connect } from 'react-redux'
 import ColorItem from './ColorItem.jsx'
 import ColorPicker from './ColorPicker.jsx'
 import Dialog from '../components/Dialog.jsx'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import { resetColor, changeLang, toggleAdvOpt } from '../action-creators.js'
 
 import __ from '../trad.js'
 
-import fetch from 'whatwg-fetch' // fetch polyfill https://github.com/github/fetch // @TODO: is this usefull ?
+import fetch from 'whatwg-fetch' // fetch polyfill https://github.com/github/fetch
 
 export class ColorForm extends React.Component {
 
@@ -74,11 +75,11 @@ export class ColorForm extends React.Component {
               <option value='fr'>Français</option>
             </select>
           </div>
-          <button id='resetColors' className='form__btn btn' onClick={this.handleOpenResetDialog}>
-            { __().btnReset }
+          <button id='resetColors' className='form__btn btn' onClick={this.handleOpenResetDialog} title={__().btnReset}>
+            <i className='fa fa-lg fa-step-backward' />
           </button>
-          <button id='buildColors' className='form__btn btn btnBuild' onClick={this.handleOpenBuildDialog}>
-            { __().btnValidate }
+          <button id='buildColors' className='form__btn btn btnBuild' onClick={this.handleOpenBuildDialog} title={__().btnValidate} >
+            <i className='fa fa-lg fa-gears' />
           </button>
 
           { colorList.map((item, i) => !item.advancedOpt && <ColorItem colorItem={item} key={i} />) }
@@ -107,13 +108,18 @@ export class ColorForm extends React.Component {
             onCancel={this.handleCloseDialog}
           />
         </div>
-        { displayColorPicker && <ColorPicker /> } {/* shouldnn't the boolean be a local state instead of from the store ? */}
+        <ReactCSSTransitionGroup
+          transitionName='colorpickerAnim'
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}>
+          { displayColorPicker && <ColorPicker key='colorPicker' /> }
+        </ReactCSSTransitionGroup>
       </div>
     )
   }
 
 }
-
+//
 const mapStateToProps = ({ lang, showAdvancedOpt, color, colorPicker: {display} }) => ({
   activeLang: lang,
   showAdvancedOpt: showAdvancedOpt,

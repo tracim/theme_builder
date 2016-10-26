@@ -10,7 +10,9 @@
     "type": "git",
     "url": "ssh://git@gitlab.algoo.fr:10022/come/tracim_theme_ui.git"
   },
-  "keywords": ["Tracim"],
+  "keywords": [
+    "Tracim"
+  ],
   "author": "Côme Huguiès",
   "license": "ISC",
   "devDependencies": {
@@ -40,6 +42,7 @@
     "classnames": "^2.2.5",
     "font-awesome": "^4.6.3",
     "react": "^15.3.2",
+    "react-addons-css-transition-group": "^15.3.2",
     "react-bootstrap": "^0.30.5",
     "react-color": "^2.3.2",
     "react-dom": "^15.3.2",

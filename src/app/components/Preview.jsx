@@ -62,7 +62,7 @@ export function Preview (props) {
             Mr Lapin
           </div>
           <div className='tracim__header__linkrightform'>
-            <input type='text' placeholder='Rechercher...' />
+            <input type='text' placeholder={__().previewSearchInput} />
           </div>
         </div>
         <div className='tracim__sidebar-left' style={style.styleSidebarLeft}>

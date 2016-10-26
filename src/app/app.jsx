@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 
 import 'bootstrap/dist/css/bootstrap.css'
 require('./css/style.styl')
-require('./font/font-awesome-4.6.3/css/font-awesome.css')
+require('./font/font-awesome-4.6.3/css/font-awesome.min.css')
 
 import ThemeChanger from './containers/ThemeChanger.jsx'
 

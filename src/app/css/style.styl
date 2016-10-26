@@ -12,12 +12,18 @@
     vertical-align top
     text-align left
   &__lang
-    padding 5px 2px
+    padding 10px 2px 5px 2px
     font-weight normal
+    font-size 13px
     label
       margin 0 3px 0 3px
     select
       float right
+      margin-top -2px
+      padding 2px
+      background-color #fff
+      border-radius 5px
+      cursor pointer
   &__label
     position relative
     display block
@@ -48,10 +54,12 @@
       vertical-align middle
   &__btn
     display inline-block
-    width 95%
-    margin 10px 4px 0px 4px
+    width 40%
+    margin 10px 8px 0px 8px
+    padding 12px 0px
     background-color #333
     color #FFF
+    text-align center
     white-space normal
     &:hover, &:focus
       color #FFF
@@ -70,21 +78,36 @@
   position absolute
   top 0px
   left 175px
+  padding 3px 0 0 3px
+  background-color #e2e2e2
   z-index 1
-  border 2px solid #333
-  border-left-width 0px
-  border-top-width 0px
+  box-shadow rgba(0, 0, 0, 0.2) 10px 10px 8px 0px, rgba(0, 0, 0, 0.188235) 10px 6px 20px 10px
   &__head
     padding 5px
-    background-color #fff
+    background-color #e2e2e2
     text-align right
     font-weight bold
     &__colorname
       float left
-      padding 0 0 0 10px
+      padding 0 0 0 2px
     &__close
-      padding 5px
+      padding 1px 4px
+      border 1px solid #aaa
+      border-radius 5px
       cursor pointer
+      &:hover
+        background-color #f1f1f1
+  &Anim
+    &-enter
+      top -300px
+      &.colorpickerAnim-enter-active
+        top 0px
+        transition: top 500ms ease-in
+    &-leave
+      top 0px
+      &.colorpickerAnim-leave-active
+        top -300px
+        transition top 300ms ease-in
 $tabHeight = 31px // calculated with padding of .tabhandler__title
 .tabhandler
   position relative
