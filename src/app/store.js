@@ -1,72 +1,31 @@
-import { createStore } from 'redux'
-import coreReducer from './reducers/index.js'
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import createLogger from 'redux-logger'
+import rootReducer from './reducers/index.js'
+import { defaultStore } from './defaultStore.js'
+import { fetchConfig } from './action-creators.js'
 
-// TODO: load config.json here ???
+// const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// const configPath = document.getElementById('content').getAttribute('configPath')
+// export const store = (function () {
+//   if (configPath !== null) {
+//     const middleware = applyMiddleware(thunkMiddleware, createLogger())
+//     return createStore(rootReducer, compose(middleware, reduxDevTools || (f => f)))
+//   } else {
+//     return createStore(rootReducer, defaultStore, reduxDevTools)
+//   }
+// })()
+// configPath !== null && store.dispatch(fetchConfig(configPath))
 
-export const defaultStore = {
-  lang: 'fr',
-  showAdvancedOpt: false,
-  activeTab: 0,
-  urlTracimInstance: 'http://algoo.trac.im/',
-  color: [
-    {
-      name: 'brand-primary',
-      hex: '#555555',
-      label: {
-        fr: 'Couleur principale',
-        en: 'Primary color'
-      },
-      advancedOpt: false
-    }, {
-      name: 'brand-secondary',
-      hex: '#f5f5f5',
-      label: {
-        fr: 'Couleur secondaire',
-        en: 'Secondary color'
-      },
-      advancedOpt: false
-    }, {
-      name: 'brand-success',
-      hex: '#5cb85c',
-      label: {
-        fr: 'Messages de succès',
-        en: 'Success messages'
-      },
-      advancedOpt: true
-    }, {
-      name: 'brand-info',
-      hex: '#5bc0de',
-      label: {
-        fr: "Messages d'informations",
-        en: 'Informative messages'
-      },
-      advancedOpt: true
-    }, {
-      name: 'brand-warning',
-      hex: '#f0ad4e',
-      label: {
-        fr: "Messages d'alertes",
-        en: 'Alert messages'
-      },
-      advancedOpt: true
-    }, {
-      name: 'brand-danger',
-      hex: '#d9534f',
-      label: {
-        fr: 'Messages importants',
-        en: 'Important messages'
-      },
-      advancedOpt: true
-    }
-  ],
-  colorPicker: {
-    display: false,
-    name: '',
-    hex: '#ffffff'
-  }
-}
+const configPath = document.getElementById('content').getAttribute('configPath')
 
-// regarding the JSON.parse(JSON.stringiy()) : little exploit of JSON lib to clone an object
-const store = createStore(coreReducer, JSON.parse(JSON.stringify(defaultStore)), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+export const store = ((middleware, reduxDevTools) =>
+  configPath !== null
+    ? createStore(rootReducer, compose(middleware, reduxDevTools || (f => f)))
+    : createStore(rootReducer, defaultStore, reduxDevTools)
+)(
+  applyMiddleware(thunkMiddleware, createLogger()),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
-export default store
+configPath !== null && store.dispatch(fetchConfig(configPath))

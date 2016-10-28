@@ -8,7 +8,7 @@ require('./font/font-awesome-4.6.3/css/font-awesome.min.css')
 
 import ThemeChanger from './containers/ThemeChanger.jsx'
 
-import store from './store.js'
+import { store } from './store.js'
 
 ReactDOM.render(
   <Provider store={store}>

@@ -65,7 +65,7 @@ const tradList = {
   }
 }
 
-import store from './store.js'
+import { store } from './store.js'
 
 let lang = store.getState().lang
 store.subscribe(() => (lang = store.getState().lang))

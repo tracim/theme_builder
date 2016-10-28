@@ -58,10 +58,15 @@ export class ColorForm extends React.Component {
     })
   }
 
+  handleLangSelection = (e) => {
+    e.persist()
+    this.props.dispatch(changeLang(e.target.value))
+  }
+
   render () {
     // if (item.advancedOpt === false || (item.advancedOpt === true && this.props.showAdvancedOpt === true)) // test to get all displayable options
 
-    const { colorList, activeLang, showAdvancedOpt, displayColorPicker, dispatch } = this.props
+    const { activeLang, showAdvancedOpt, colorList, displayColorPicker, dispatch } = this.props
 
     return (
       <div className='form__wrapper'>
@@ -70,7 +75,7 @@ export class ColorForm extends React.Component {
             <label htmlFor='langSelector'>
               { __().labelSelectLang }
             </label>
-            <select id='langSelector' onChange={(e) => dispatch(changeLang(e))} value={activeLang}>
+            <select id='langSelector' onChange={this.handleLangSelection} value={activeLang}>
               <option value='en'>English</option>
               <option value='fr'>Français</option>
             </select>
@@ -113,8 +118,8 @@ export class ColorForm extends React.Component {
             onCancel={this.handleCloseDialog}
           />
         </div>
-        <ReactCSSTransitionGroup transitionName='colorpickerAnim' transitionEnterTimeout={300} transitionLeaveTimeout={10000}>
-          { displayColorPicker && <ColorPicker key='colorPicker' /> }
+        <ReactCSSTransitionGroup transitionName='colorpickerAnim' transitionEnterTimeout={400} transitionLeaveTimeout={250}>
+          { displayColorPicker && <ColorPicker key='colorpicker' /> }
         </ReactCSSTransitionGroup>
       </div>
     )
@@ -123,8 +128,8 @@ export class ColorForm extends React.Component {
 }
 
 const mapStateToProps = ({ lang, showAdvancedOpt, color, colorPicker: {display} }) => ({
+  showAdvancedOpt,
   activeLang: lang,
-  showAdvancedOpt: showAdvancedOpt,
   colorList: color,
   displayColorPicker: display
 })

@@ -50,7 +50,7 @@ function mapStateToProps (state) {
   return {
     lang: state.lang,
     activeTab: state.activeTab,
-    urlTracimInstance: state.urlTracimInstance,
+    urlTracimInstance: state.config.urlTracimInstance,
     colorList: state.color
   }
 }

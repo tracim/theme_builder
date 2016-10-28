@@ -16,7 +16,9 @@ export class ColorPicker extends React.Component {
           <span className='colorpicker__head__colorname'>
             { __().colorPickerLabel }
           </span>
-          <span className='colorpicker__head__close' onClick={() => dispatch(closePicker())}>X</span>
+          <span className='colorpicker__head__close' onClick={() => dispatch(closePicker())}>
+            <i className='fa fa-close' />
+          </span>
         </div>
         <ChromePicker
           disableAlpha

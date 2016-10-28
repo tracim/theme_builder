@@ -1,5 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
+import Loader from '../components/Loader.jsx'
 import ColorForm from './ColorForm.jsx'
 import TabHandler from './TabHandler.jsx'
 
@@ -7,6 +9,7 @@ class ThemeChanger extends React.Component {
   render () {
     return (
       <div>
+        { this.props.isFetching && <Loader /> }
         <ColorForm />
         <TabHandler />
       </div>
@@ -14,4 +17,6 @@ class ThemeChanger extends React.Component {
   }
 }
 
-export default ThemeChanger
+const mapStateToProps = ({ isFetching }) => ({ isFetching })
+
+export default connect(mapStateToProps)(ThemeChanger)

@@ -1,6 +1,17 @@
 *
   box-sizing border-box
   margin 0px
+.overlay-loader
+  position absolute
+  top 0px
+  left 0px
+  width 100%
+  height 100%
+  text-align center
+  background-color rgba(200, 200, 200, 0.5)
+  z-index 1
+  i
+    margin-top 15%
 .form
   width 175px
   max-height 100%
@@ -106,12 +117,12 @@
       top -300px
       &-active
         top 0px
-        transition: top 300ms ease-in // duration must match transitionEnterTimeout in ColorForm.jsx
+        transition: top 400ms ease-in // duration must match transitionEnterTimeout in ColorForm.jsx
     &-leave
       top 0px
       &-active
         top -300px
-        transition top 150ms ease-in // duration must match transitionLeaveTimeout in ColorForm.jsx
+        transition top 250ms ease-in // duration must match transitionLeaveTimeout in ColorForm.jsx
   &__head
     padding 5px
     background-color #e2e2e2

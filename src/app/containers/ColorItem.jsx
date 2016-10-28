@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { openPicker, closePicker } from '../action-creators.js'
 
-import store from '../store.js'
+import { store } from '../store.js'
 
 export class ColorItem extends React.Component {
 
