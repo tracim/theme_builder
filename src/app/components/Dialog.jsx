@@ -27,7 +27,7 @@ export function Dialog (props) {
 }
 
 Dialog.propTypes = {
-  // todo add msg
+  msg: React.PropTypes.string,
   display: React.PropTypes.bool.isRequired,
   onCancel: React.PropTypes.func.isRequired,
   onValidate: React.PropTypes.func.isRequired

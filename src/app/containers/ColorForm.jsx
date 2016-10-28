@@ -9,7 +9,7 @@ import { resetColor, changeLang, toggleAdvOpt } from '../action-creators.js'
 
 import __ from '../trad.js'
 
-import fetch from 'whatwg-fetch' // fetch polyfill https://github.com/github/fetch
+import 'whatwg-fetch' // fetch polyfill https://github.com/github/fetch
 
 export class ColorForm extends React.Component {
 
