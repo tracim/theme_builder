@@ -1,4 +1,4 @@
-//const path = require('path')
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = {
   entry: ['babel-polyfill', 'whatwg-fetch', './src/app/app.jsx'],
@@ -13,7 +13,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'standard',
-        exclude: /node_modules/,
+        exclude: [/node_modules/, /\/src\/app\/lib\/FileSaver\.js/]
       }
     ],
     loaders: [
@@ -67,7 +67,13 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
-  }
+  },
+  plugins: [new BundleAnalyzerPlugin({
+    analyzerMode: 'server',
+    reportFilename: 'report.html',
+    openAnalyzer: false, // set to true to see the analyzer
+    generateStatsFile: false,
+  })]
   /*
   TODO : config to test
   {

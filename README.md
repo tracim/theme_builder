@@ -19,3 +19,9 @@ npm install
 ````
 webpack
 ````
+
+### Open the app
+
+Open index.html throught a webserver (apache or nginx)
+
+Edit the attribut configPath from index.html to change the url to get the app configuration

@@ -34,7 +34,8 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "webpack-bundle-analyzer": "^1.4.1"
   },
   "dependencies": {
     "babel-preset-react": "^6.16.0",
@@ -54,7 +55,8 @@
   },
   "standard": {
     "globals": [
-      "fetch"
+      "fetch",
+      "Blob"
     ],
     "parser": "babel-eslint",
     "ignore": []

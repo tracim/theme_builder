@@ -5,7 +5,7 @@ import ColorPicker from './ColorPicker.jsx'
 import Dialog from '../components/Dialog.jsx'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-import { resetColor, changeLang, toggleAdvOpt } from '../action-creators.js'
+import { resetColor, changeLang, toggleAdvOpt, requestInitConfig, receiveInitConfig } from '../action-creators.js'
 
 import __ from '../trad.js'
 
@@ -36,6 +36,9 @@ export class ColorForm extends React.Component {
     // if (self.fetch) console.log('fetch is native')
     // else console.log('fetch is polyfill')
 
+    this.props.dispatch(requestInitConfig())
+    this.handleCloseDialog()
+
     const varList = {}
     this.props.colorList.forEach((item) => (varList[item.name] = item.hex))
 
@@ -48,9 +51,13 @@ export class ColorForm extends React.Component {
       body: JSON.stringify({ variables: varList })
     })
     .then(response => response.text())
-    .then(function (responseText) {
-      console.log(responseText)
-      // Todo : envoyer responseText à tracim instance, need end point
+    .then((responseText) => {
+      const FileSaver = require('../lib/FileSaver.js')
+
+      const blob = new Blob([responseText], { type: 'text/plain;charset=utf-8' })
+      FileSaver.saveAs(blob, 'bootstrap.css')
+
+      this.props.dispatch(receiveInitConfig())
     })
     .catch(function (e) {
       console.log('Error in generate-css request :')
