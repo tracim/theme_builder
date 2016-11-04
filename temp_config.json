@@ -4,7 +4,7 @@
   "activeTab": 0,
   "config": {
     "urlTracimInstance": "http://www.perdu.com",
-    "isSaasInstance": false
+    "isSaasInstance": true
   },
   "color": [
     {
