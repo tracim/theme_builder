@@ -5,7 +5,7 @@ import ColorPicker from './ColorPicker.jsx'
 import Dialog from '../components/Dialog.jsx'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-import { resetColor, changeLang, toggleAdvOpt, requestInitConfig, receiveInitConfig } from '../action-creators.js'
+import { resetColor, changeLang, toggleAdvOpt, requestAsyncStart, requestAsyncEnd } from '../action-creators.js'
 
 import __ from '../trad.js'
 
@@ -36,7 +36,7 @@ export class ColorForm extends React.Component {
     // if (self.fetch) console.log('fetch is native')
     // else console.log('fetch is polyfill')
 
-    this.props.dispatch(requestInitConfig())
+    this.props.dispatch(requestAsyncStart()) // to show the loader
     this.handleCloseDialog()
 
     const varList = {}
@@ -57,7 +57,7 @@ export class ColorForm extends React.Component {
       const blob = new Blob([responseText], { type: 'text/plain;charset=utf-8' })
       FileSaver.saveAs(blob, 'bootstrap.css')
 
-      this.props.dispatch(receiveInitConfig())
+      this.props.dispatch(requestAsyncEnd()) // to hide the loader
     })
     .catch(function (e) {
       console.log('Error in generate-css request :')

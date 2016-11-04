@@ -1,7 +1,7 @@
 import 'whatwg-fetch'
 
-export const REQUEST_INIT_CONFIG = 'REQUEST_INIT_CONFIG'
-export const RECEIVE_INIT_CONFIG = 'RECEIVE_INIT_CONFIG'
+export const REQUEST_ASYNC_START = 'REQUEST_ASYNC_START'
+export const REQUEST_ASYNC_END = 'REQUEST_ASYNC_END'
 
 export const INIT_COLOR = 'INIT_COLOR'
 export const RESET_COLOR = 'RESET_COLOR'
@@ -22,13 +22,13 @@ export const UPDATE_TRACIM_INSTANCE = 'UPDATE_TRACIM_INSTANCE'
 export const UPDATE_IS_SAAS_INSTANCE = 'UPDATE_IS_SAAS_INSTANCE'
 export const UPDATE_CONFIG = 'UPDATE_CONFIG'
 
-export function requestInitConfig () {
-  return { type: REQUEST_INIT_CONFIG }
+export function requestAsyncStart () {
+  return { type: REQUEST_ASYNC_START }
 }
 
 export function fetchConfig (urlJsonCfg) {
   return function (dispatch) { // returning a function in an action creator is allowed by the middleware redux-thunk to handle asynchronous actions
-    dispatch(requestInitConfig()) // set isFetching to true to display a loader
+    dispatch(requestAsyncStart()) // set isFetching to true to display a loader
     return fetch(urlJsonCfg, {
       method: 'GET',
       headers: { 'Accept': 'application/json' }
@@ -43,13 +43,13 @@ export function fetchConfig (urlJsonCfg) {
         dispatch(initColor(json.color))
       ])
     })
-    .then(() => dispatch(receiveInitConfig())) // set isFetching to false to hide the loader
+    .then(() => dispatch(requestAsyncEnd())) // set isFetching to false to hide the loader
     .catch((e) => console.log('Error fetching config', e))
   }
 }
 
-export function receiveInitConfig () {
-  return { type: RECEIVE_INIT_CONFIG }
+export function requestAsyncEnd () {
+  return { type: REQUEST_ASYNC_END }
 }
 
 export function initColor (colorList) {

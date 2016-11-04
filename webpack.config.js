@@ -69,7 +69,7 @@ module.exports = {
     extensions: ['', '.js', '.jsx'],
   },
   plugins: [new BundleAnalyzerPlugin({
-    analyzerMode: 'server',
+    analyzerMode: 'disable',
     reportFilename: 'report.html',
     openAnalyzer: false, // set to true to see the analyzer
     generateStatsFile: false,
