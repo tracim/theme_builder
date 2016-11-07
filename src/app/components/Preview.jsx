@@ -1,4 +1,5 @@
 import React from 'react'
+import logoTracim from '../image/logo_tracim.png'
 
 import __ from '../trad.js'
 
@@ -47,7 +48,7 @@ export function Preview (props) {
       <div className='tracim'>
         <div className='tracim__header' style={style.styleHeader}>
           <div className='tracim__header__logo'>
-            <img src='src/app/image/logo_tracim.png' />
+            <img src={logoTracim} />
           </div>
           <div className='tracim__header__link'>
             <i className='fa fa-home fa-lg' />

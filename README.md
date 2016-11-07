@@ -14,10 +14,16 @@ sudo apt-get install -y nodejs
 npm install
 ````
 
+### Installation of webpack globally
+
+````
+npm install webpack -g
+````
+
 ### Build bundle.js
 
 ````
-webpack
+webpack -p
 ````
 
 ### Open the app

@@ -5,7 +5,7 @@ module.exports = {
   output: {
     path: 'dist',
     filename: 'bundle.js',
-    publicPath: 'dist', // https://github.com/webpack/docs/wiki/Configuration#outputpublicpath
+    // publicPath: '/', // https://github.com/webpack/docs/wiki/Configuration#outputpublicpath
   },
   watch: true,
   module: {
