@@ -26,7 +26,7 @@ export class TabHandler extends React.Component {
     return (
       <div className='tabhandler'>
         { isSaasInstance ? (
-          <div>
+          <div className='full-height'>
             <div className={classnames('tabhandler__title', activeTab === 0 && 'active')} onClick={() => dispatch(switchTab(0))}>
               { __().tabTitle0 }
             </div>

@@ -1,6 +1,11 @@
 *
   box-sizing border-box
   margin 0px
+html, body
+  height 100%
+  width 100%
+.full-height
+  height 100%
 .overlay-loader
   position absolute
   top 0px
@@ -13,13 +18,14 @@
   i
     margin-top 15%
 .form
-  width 175px
+  width 165px
   max-height 100%
   padding 0 0 20px 0
-  overflow-y auto
   vertical-align top
   &__wrapper
     display inline-block
+    max-height 100%
+    overflow-y auto
     vertical-align top
     text-align left
   &__lang
@@ -140,9 +146,8 @@
         background-color #f1f1f1
 $tabHeight = 31px // calculated with padding of .tabhandler__title
 .tabhandler
-  position relative
   display inline-block
-  width calc(100% - 175px)
+  width calc(100% - 185px)
   height 100%
   &__title
     display inline-block
@@ -162,14 +167,15 @@ $tabHeight = 31px // calculated with padding of .tabhandler__title
       color #3a3a67
       background-color #ddd
   &__content
-    position absolute
     width 100%
     height "calc(100% - %s)" % $tabHeight
 .preview, .liveinstance
   width 100%
+  height 100%
 $tracimHeaderHeight = 50px
 .tracim
   width 100%
+  height 100%
   &__header
     width 100%
     height $tracimHeaderHeight
@@ -300,7 +306,7 @@ $tracimHeaderHeight = 50px
         font-size 21px
 .traciminstance
   width 100%
-  height 100%
+  height calc(100% - 3px)
   border none
 .modal-dialog
   margin-top 120px

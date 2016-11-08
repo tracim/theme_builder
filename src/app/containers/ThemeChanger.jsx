@@ -8,7 +8,7 @@ import TabHandler from './TabHandler.jsx'
 class ThemeChanger extends React.Component {
   render () {
     return (
-      <div>
+      <div className='full-height'>
         { this.props.isFetching && <Loader /> }
         <ColorForm />
         <TabHandler />
