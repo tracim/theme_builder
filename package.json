@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.jsx",
   "scripts": {
-    "start": "webpack-dev-server --colors --inline --hot"
+    "start": "webpack --watch",
+    "servdev": "webpack-dev-server --watch --colors --inline --hot",
+    "build": "webpack -p"
   },
   "repository": {
     "type": "git",

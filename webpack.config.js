@@ -7,7 +7,7 @@ module.exports = {
     filename: 'bundle.js',
     // publicPath: '/', // https://github.com/webpack/docs/wiki/Configuration#outputpublicpath
   },
-  watch: true,
+  watch: false,
   module: {
     preLoaders: [
       {
