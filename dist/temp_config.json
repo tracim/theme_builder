@@ -1,15 +1,15 @@
 {
-  "lang": "en",
-  "showAdvancedOpt": true,
+  "lang": "fr",
+  "showAdvancedOpt": false,
   "activeTab": 0,
   "config": {
-    "urlTracimInstance": "http://www.perdu.com",
-    "isSaasInstance": true
+    "urlTracimInstance": "http://algoo.trac.im/",
+    "isSaasInstance": false
   },
   "color": [
     {
       "name": "brand-primary",
-      "hex": "#550000",
+      "hex": "#555555",
       "label": {
         "fr": "Couleur principale",
         "en": "Primary color"
@@ -18,7 +18,7 @@
     },
     {
       "name": "brand-secondary",
-      "hex": "#005500",
+      "hex": "#f5f5f5",
       "label": {
         "fr": "Couleur secondaire",
         "en": "Secondary color"

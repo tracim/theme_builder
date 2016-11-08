@@ -60,7 +60,7 @@ export function Preview (props) {
           </div>
           <div className='tracim__header__linkright'>
             <i className='fa fa-lg fa-user' />
-            Mr Lapin
+            Mr Doe
           </div>
           <div className='tracim__header__linkrightform'>
             <input type='text' placeholder={__().previewSearchInput} />
@@ -115,7 +115,7 @@ export function Preview (props) {
               <i className='fa fa-fw fa-lg fa-home' />
               { __().previewContentTitle }
             </div>
-            <div className='tracim__content__header__subtitle'>{ __().previewContentSubTitle }, Mr Lapin</div>
+            <div className='tracim__content__header__subtitle'>{ __().previewContentSubTitle }, Mr Doe</div>
           </div>
           <div className='tracim__content__bootstrap'>
             <div className='tracim__content__boostrap__item'>

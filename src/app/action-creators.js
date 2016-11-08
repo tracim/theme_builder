@@ -94,8 +94,8 @@ export function updateTracimInstance (url) {
   return { type: UPDATE_TRACIM_INSTANCE, url }
 }
 
-export function updateIsSassInstance (isSassInstance) {
-  return { type: UPDATE_IS_SAAS_INSTANCE, isSassInstance }
+export function updateIsSaasInstance (isSaasInstance) {
+  return { type: UPDATE_IS_SAAS_INSTANCE, isSaasInstance }
 }
 
 export function updateConfig (config) {

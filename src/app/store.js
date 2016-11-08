@@ -20,7 +20,7 @@ import { fetchConfig } from './action-creators.js'
 const configPath = document.getElementById('content').getAttribute('configPath')
 
 export const store = ((middleware, reduxDevTools) =>
-  configPath !== null
+  configPath !== ''
     ? createStore(rootReducer, compose(middleware, reduxDevTools || (f => f)))
     : createStore(rootReducer, defaultStore, reduxDevTools)
 )(
@@ -28,4 +28,4 @@ export const store = ((middleware, reduxDevTools) =>
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-configPath !== null && store.dispatch(fetchConfig(configPath))
+configPath !== '' && store.dispatch(fetchConfig(configPath))
