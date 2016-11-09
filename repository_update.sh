@@ -4,6 +4,6 @@ USER="root"
 COMMAND="cd $DIR \
 && git pull origin master \
 && npm install \
-&& webpack -p "
+&& npm run build "
 echo `date` Execute as $USER: $COMMAND
 sudo -u ${USER} -- bash -c "$COMMAND"
