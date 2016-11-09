@@ -1,4 +1,6 @@
 //const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const webpack = require('webpack')
+const isProduction = process.env.NODE_ENV === "production"
 
 module.exports = {
   entry: ['babel-polyfill', 'whatwg-fetch', './src/app/app.jsx'],
@@ -7,7 +9,7 @@ module.exports = {
     filename: 'bundle.js',
     // publicPath: '/', // https://github.com/webpack/docs/wiki/Configuration#outputpublicpath
   },
-  watch: false,
+  watch: isProduction ? false : true,
   module: {
     preLoaders: [
       {
@@ -68,6 +70,16 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
+  plugins: isProduction
+    ? [
+      new webpack.DefinePlugin({
+        'process.env': { 'NODE_ENV': JSON.stringify('production') }
+      }),
+      new webpack.optimize.UglifyJsPlugin({
+        compress: { warnings: false }
+      })
+    ]
+    : []
   // plugins: [new BundleAnalyzerPlugin({
   //   analyzerMode: 'server',
   //   reportFilename: 'report.html',

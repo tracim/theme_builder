@@ -5,7 +5,7 @@ export const defaultStore = {
   activeTab: 0,
   config: {
     urlTracimInstance: 'http://algoo.trac.im/',
-    isSaasInstance: true
+    isSaasInstance: false
   },
   color: [
     {

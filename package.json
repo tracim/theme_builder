@@ -4,9 +4,9 @@
   "description": "",
   "main": "app.jsx",
   "scripts": {
-    "start": "webpack --watch",
+    "start": "NODE_ENV=development && webpack --watch",
     "servdev": "webpack-dev-server --watch --colors --inline --hot",
-    "build": "webpack -p"
+    "build": "NODE_ENV=production webpack -p"
   },
   "repository": {
     "type": "git",
