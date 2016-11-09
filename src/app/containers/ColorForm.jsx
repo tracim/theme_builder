@@ -42,7 +42,7 @@ export class ColorForm extends React.Component {
     const varList = {}
     this.props.colorList.forEach((item) => (varList[item.name] = item.hex))
 
-    fetch('http://tracim-theme.dev.algoo.fr/api/generate-css', {
+    fetch('http://theme.tracim.org/api/generate-css', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
