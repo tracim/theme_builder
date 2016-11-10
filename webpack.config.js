@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const isProduction = process.env.NODE_ENV === "production"
 
 module.exports = {
-  entry: ['babel-polyfill', 'whatwg-fetch', './src/app/app.jsx'],
+  entry: ['babel-polyfill', 'whatwg-fetch', './app/app.jsx'],
   output: {
     path: 'dist',
     filename: 'bundle.js',
@@ -15,17 +15,17 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'standard',
-        exclude: [/node_modules/, /\/src\/app\/lib\/FileSaver\.js/]
+        exclude: [/node_modules/, /\/app\/lib\/FileSaver\.js/]
       }
     ],
     loaders: [
       {
         test: [/\.js$/, /\.jsx$/],
         include: [
-          /\/src\/app/, // path.resolve(__dirname, 'src/app'), // /src/app
-          // /\/src\/app\/components/, // path.resolve(__dirname, 'src/app/components'), // /src/app/components
-          // /\/src\/app\/containers/, // path.resolve(__dirname, 'src/app/components'), // /src/app/containers
-          // /\/src\/app\/reducers/ // path.resolve(__dirname, 'src/app/reducers'), // /src/app
+          /\/app/, // path.resolve(__dirname, 'app'), // /app
+          // /\/app\/components/, // path.resolve(__dirname, 'app/components'), // /app/components
+          // /\/app\/containers/, // path.resolve(__dirname, 'app/components'), // /app/containers
+          // /\/app\/reducers/ // path.resolve(__dirname, 'app/reducers'), // /app
         ],
         loader: 'babel-loader',
         query: {
@@ -35,7 +35,7 @@ module.exports = {
       }, {
         test: /\.css$/,
         // the line bellow is useless because only required (or imported) files from .js, .jsx will be bundled (the line bellow is still valid)
-        //exclude: /\/src\/app\/font\/font-awesome-4.6.3\/css\/font-awesome\.css/,
+        //exclude: /\/app\/font\/font-awesome-4.6.3\/css\/font-awesome\.css/,
         loader: 'style-loader!css-loader',
       }, {
         test: /\.styl$/,
