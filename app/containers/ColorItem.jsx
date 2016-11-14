@@ -25,8 +25,8 @@ export class ColorItem extends React.Component {
       <div className='form__input__wrapper'>
         <label className='form__label'>
           <div className='form__label__detail'>
-            {activeLang === 'fr' ? colorItem.label.fr : null}
-            {activeLang === 'en' ? colorItem.label.en : null}
+            {activeLang === 'fr' && colorItem.label.fr}
+            {activeLang === 'en' && colorItem.label.en}
           </div>
         </label>
         <div className='form__input'>

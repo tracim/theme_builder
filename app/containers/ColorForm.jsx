@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ColorItem from './ColorItem.jsx'
 import ColorPicker from './ColorPicker.jsx'
-import Dialog from '../components/Dialog.jsx'
+import { Dialog, DialogHelp } from '../components/Dialog.jsx'
+// import DialogHelp from '../components/DialogHelp.jsx'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import { resetColor, changeLang, toggleAdvOpt, requestAsyncStart, requestAsyncEnd } from '../action-creators.js'
@@ -17,6 +18,7 @@ export class ColorForm extends React.Component {
     super()
 
     this.state = {
+      displayHelpDialog: false,
       displayResetDialog: false,
       displayBuildDialog: false
     }
@@ -27,9 +29,10 @@ export class ColorForm extends React.Component {
     this.handleCloseDialog()
   }
 
-  handleCloseDialog = () => this.setState({ displayResetDialog: false, displayBuildDialog: false })
-  handleOpenResetDialog = () => this.setState({ displayResetDialog: true, displayBuildDialog: false })
-  handleOpenBuildDialog = () => this.setState({ displayResetDialog: false, displayBuildDialog: true })
+  handleCloseDialog = () => this.setState({ displayHelpDialog: false, displayResetDialog: false, displayBuildDialog: false })
+  handleOpenHelpDialog = () => this.setState({ displayHelpDialog: true, displayResetDialog: false, displayBuildDialog: false })
+  handleOpenResetDialog = () => this.setState({ displayHelpDialog: false, displayResetDialog: true, displayBuildDialog: false })
+  handleOpenBuildDialog = () => this.setState({ displayHelpDialog: false, displayResetDialog: false, displayBuildDialog: true })
 
   // the syntaxe bellow is viable thx to babel plugin transform-class-properties. It avoids having to bind 'this' to the function in the class' constructor
   handleBuildColor = () => {
@@ -78,6 +81,18 @@ export class ColorForm extends React.Component {
     return (
       <div className='form__wrapper'>
         <div className='form'>
+
+          <div className='form__help' onClick={this.handleOpenHelpDialog}>
+            <i className='fa fa-lg fa-lightbulb-o' aria-hidden='true' />
+            <br />
+            { __().labelHelpBtn }
+          </div>
+
+          <DialogHelp
+            display={this.state.displayHelpDialog}
+            onValidate={this.handleCloseDialog}
+          />
+
           <div className='form__lang'>
             <label htmlFor='langSelector'>
               { __().labelSelectLang }
@@ -87,9 +102,11 @@ export class ColorForm extends React.Component {
               <option value='fr'>Français</option>
             </select>
           </div>
+
           <button id='resetColors' className='form__btn btn' onClick={this.handleOpenResetDialog} title={__().btnReset}>
             <i className='fa fa-lg fa-step-backward' />
           </button>
+
           <button id='buildColors' className='form__btn btn btnBuild' onClick={this.handleOpenBuildDialog} title={__().btnValidate} >
             <i className='fa fa-lg fa-gears' />
           </button>
@@ -107,7 +124,6 @@ export class ColorForm extends React.Component {
             <div className='form__advancedopt__list'>
               { showAdvancedOpt && colorList.map((item, i) => item.advancedOpt && <ColorItem colorItem={item} key={i} />) }
             </div>
-
           </div>
 
           {/* Reset Dialog */}
