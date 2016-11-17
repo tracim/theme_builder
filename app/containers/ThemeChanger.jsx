@@ -5,7 +5,7 @@ import Loader from '../components/Loader.jsx'
 import ColorForm from './ColorForm.jsx'
 import TabHandler from './TabHandler.jsx'
 
-class ThemeChanger extends React.Component {
+export class ThemeChanger extends React.Component {
   render () {
     return (
       <div className='full-height'>

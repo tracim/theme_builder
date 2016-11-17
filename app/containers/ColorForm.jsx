@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import ColorItem from './ColorItem.jsx'
 import ColorPicker from './ColorPicker.jsx'
+import ColorItem from '../components/ColorItem.jsx'
 import { Dialog, DialogHelp } from '../components/Dialog.jsx'
 // import DialogHelp from '../components/DialogHelp.jsx'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-import { resetColor, changeLang, toggleAdvOpt, requestAsyncStart, requestAsyncEnd } from '../action-creators.js'
+import { resetColor, openPicker, closePicker, changeLang, toggleAdvOpt, requestAsyncStart, requestAsyncEnd } from '../action-creators.js'
 
 import __ from '../trad.js'
 
@@ -33,6 +33,13 @@ export class ColorForm extends React.Component {
   handleOpenHelpDialog = () => this.setState({ displayHelpDialog: true, displayResetDialog: false, displayBuildDialog: false })
   handleOpenResetDialog = () => this.setState({ displayHelpDialog: false, displayResetDialog: true, displayBuildDialog: false })
   handleOpenBuildDialog = () => this.setState({ displayHelpDialog: false, displayResetDialog: false, displayBuildDialog: true })
+
+  handleOpenPicker = ({name, hex}) => {
+    const { nameColorPicker, dispatch } = this.props
+
+    if (nameColorPicker === name) dispatch(closePicker())
+    else dispatch(openPicker(name, hex))
+  }
 
   // the syntaxe bellow is viable thx to babel plugin transform-class-properties. It avoids having to bind 'this' to the function in the class' constructor
   handleBuildColor = () => {
@@ -74,8 +81,6 @@ export class ColorForm extends React.Component {
   }
 
   render () {
-    // if (item.advancedOpt === false || (item.advancedOpt === true && this.props.showAdvancedOpt === true)) // test to get all displayable options
-
     const { activeLang, showAdvancedOpt, colorList, displayColorPicker, dispatch } = this.props
 
     return (
@@ -111,7 +116,7 @@ export class ColorForm extends React.Component {
             <i className='fa fa-lg fa-gears' />
           </button>
 
-          { colorList.map((item, i) => !item.advancedOpt && <ColorItem colorItem={item} key={i} />) }
+          { colorList.map((item, i) => !item.advancedOpt && <ColorItem colorItem={item} lang={activeLang} onOpenPicker={() => this.handleOpenPicker(item)} key={i} />) }
 
           <div className='form__advancedopt'>
             <div className='form__advancedopt__toggle' onClick={() => dispatch(toggleAdvOpt())}>
@@ -150,10 +155,11 @@ export class ColorForm extends React.Component {
 
 }
 
-const mapStateToProps = ({ lang, showAdvancedOpt, color, colorPicker: {display} }) => ({
+const mapStateToProps = ({ lang, showAdvancedOpt, color, colorPicker: {name, display} }) => ({
   showAdvancedOpt,
   activeLang: lang,
   colorList: color,
+  nameColorPicker: name,
   displayColorPicker: display
 })
 
