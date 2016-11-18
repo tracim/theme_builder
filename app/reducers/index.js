@@ -5,10 +5,9 @@ import showAdvancedOpt from './advancedOpt.js'
 import activeTab from './tab.js'
 import config from './config.js'
 import color from './color.js'
-import colorPicker from './colorPicker.js'
 
 const rootReducer = combineReducers({
-  isFetching, lang, showAdvancedOpt, activeTab, config, color, colorPicker
+  isFetching, lang, showAdvancedOpt, activeTab, config, color
 })
 
 export default rootReducer

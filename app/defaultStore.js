@@ -57,10 +57,5 @@ export const defaultStore = {
       },
       advancedOpt: true
     }
-  ],
-  colorPicker: {
-    display: false,
-    name: '',
-    hex: '#ffffff'
-  }
+  ]
 }

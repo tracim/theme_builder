@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import ColorPicker from './ColorPicker.jsx'
+import ColorPicker from '../components/ColorPicker.jsx'
 import ColorItem from '../components/ColorItem.jsx'
 import { Dialog, DialogHelp } from '../components/Dialog.jsx'
 // import DialogHelp from '../components/DialogHelp.jsx'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-import { resetColor, openPicker, closePicker, changeLang, toggleAdvOpt, requestAsyncStart, requestAsyncEnd } from '../action-creators.js'
+import { resetColor, changeColor, changeLang, toggleAdvOpt, requestAsyncStart, requestAsyncEnd } from '../action-creators.js'
 
 import __ from '../trad.js'
 
@@ -18,6 +18,11 @@ export class ColorForm extends React.Component {
     super()
 
     this.state = {
+      colorPicker: {
+        display: false,
+        name: '',
+        hex: '#ffffff'
+      },
       displayHelpDialog: false,
       displayResetDialog: false,
       displayBuildDialog: false
@@ -29,16 +34,29 @@ export class ColorForm extends React.Component {
     this.handleCloseDialog()
   }
 
-  handleCloseDialog = () => this.setState({ displayHelpDialog: false, displayResetDialog: false, displayBuildDialog: false })
-  handleOpenHelpDialog = () => this.setState({ displayHelpDialog: true, displayResetDialog: false, displayBuildDialog: false })
-  handleOpenResetDialog = () => this.setState({ displayHelpDialog: false, displayResetDialog: true, displayBuildDialog: false })
-  handleOpenBuildDialog = () => this.setState({ displayHelpDialog: false, displayResetDialog: false, displayBuildDialog: true })
+  handleCloseDialog = () => this.setState({ ...this.state, displayHelpDialog: false, displayResetDialog: false, displayBuildDialog: false })
+  handleOpenHelpDialog = () => this.setState({ ...this.state, displayHelpDialog: true, displayResetDialog: false, displayBuildDialog: false })
+  handleOpenResetDialog = () => this.setState({ ...this.state, displayHelpDialog: false, displayResetDialog: true, displayBuildDialog: false })
+  handleOpenBuildDialog = () => this.setState({ ...this.state, displayHelpDialog: false, displayResetDialog: false, displayBuildDialog: true })
 
   handleOpenPicker = ({name, hex}) => {
-    const { nameColorPicker, dispatch } = this.props
+    const updatedColorPicker = name === this.state.colorPicker.name
+      ? { name: '', hex: '#ffffff', display: false }
+      : { name, hex, display: true }
 
-    if (nameColorPicker === name) dispatch(closePicker())
-    else dispatch(openPicker(name, hex))
+    this.setState({ ...this.state, colorPicker: updatedColorPicker })
+  }
+
+  handleClosePicker = () => {
+    this.setState({ ...this.state, colorPicker: { name: '', hex: '#ffffff', display: false } })
+  }
+
+  handleChangeColor = (name, hex) => {
+    this.props.dispatch(changeColor(name, hex))
+  }
+
+  handleChangeColorComplete = (name, hex) => {
+    this.setState({ ...this.state, colorPicker: { name, hex, display: true } })
   }
 
   // the syntaxe bellow is viable thx to babel plugin transform-class-properties. It avoids having to bind 'this' to the function in the class' constructor
@@ -81,7 +99,7 @@ export class ColorForm extends React.Component {
   }
 
   render () {
-    const { activeLang, showAdvancedOpt, colorList, displayColorPicker, dispatch } = this.props
+    const { activeLang, showAdvancedOpt, colorList, dispatch } = this.props
 
     return (
       <div className='form__wrapper'>
@@ -147,7 +165,15 @@ export class ColorForm extends React.Component {
           />
         </div>
         <ReactCSSTransitionGroup transitionName='colorpickerAnim' transitionEnterTimeout={400} transitionLeaveTimeout={250}>
-          { displayColorPicker && <ColorPicker key='colorpicker' /> }
+          { this.state.colorPicker.display &&
+            <ColorPicker
+              colorName={this.state.colorPicker.name}
+              colorHex={this.state.colorPicker.hex}
+              onClosePicker={this.handleClosePicker}
+              onChangeColor={this.handleChangeColor}
+              onChangeColorComplete={this.handleChangeColorComplete}
+            />
+          }
         </ReactCSSTransitionGroup>
       </div>
     )
@@ -155,12 +181,10 @@ export class ColorForm extends React.Component {
 
 }
 
-const mapStateToProps = ({ lang, showAdvancedOpt, color, colorPicker: {name, display} }) => ({
+const mapStateToProps = ({ lang, showAdvancedOpt, color }) => ({
   showAdvancedOpt,
   activeLang: lang,
-  colorList: color,
-  nameColorPicker: name,
-  displayColorPicker: display
+  colorList: color
 })
 
 export default connect(mapStateToProps)(ColorForm)
