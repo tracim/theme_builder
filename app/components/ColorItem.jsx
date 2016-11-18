@@ -1,16 +1,15 @@
 import React from 'react'
 
-export function ColorItem (props) {
-  const { colorItem, lang, onOpenPicker } = props
-
+export function ColorItem ({ colorItem, lang, onOpenPicker }) {
   const styleFormInputPreview = {
     backgroundColor: colorItem.hex
   }
 
-  // let labelForLang
-  // if (lang === 'fr') labelForLang = colorItem.label.fr
-  // else if (lang === 'en') labelForLang = colorItem.label.en
-  const labelForLang = (({fr, en}) => lang === 'fr' ? fr : lang === 'en' && en)(colorItem.label)
+  let labelForLang
+  if (lang === 'fr') labelForLang = colorItem.label.fr
+  else if (lang === 'en') labelForLang = colorItem.label.en
+  else labelForLang = colorItem.label.en
+  // const labelForLang = (({fr, en}) => lang === 'fr' ? fr : lang === 'en' && en)(colorItem.label)
 
   return (
     <div className='form__input__wrapper'>

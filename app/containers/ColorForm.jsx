@@ -127,7 +127,7 @@ export class ColorForm extends React.Component {
             </ReactCSSTransitionGroup>
 
             <div className='form__advancedopt__list'>
-              { showAdvancedOpt && colorList.map((item, i) => item.advancedOpt && <ColorItem colorItem={item} key={i} />) }
+              { showAdvancedOpt && colorList.map((item, i) => item.advancedOpt && <ColorItem colorItem={item} lang={activeLang} onOpenPicker={() => this.handleOpenPicker(item)} key={i} />) }
             </div>
           </div>
 
