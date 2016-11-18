@@ -19,6 +19,10 @@
   ],
   "author": "Côme Huguiès",
   "license": "ISC",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/tracim/theme_builder.git"
+  },
   "devDependencies": {
     "babel-core": "^6.17.0",
     "babel-eslint": "^6.1.2",

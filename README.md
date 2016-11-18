@@ -23,7 +23,7 @@ npm install webpack -g
 ### Build bundle.js
 
 ````
-webpack -p
+npm run build
 ````
 
 ### Open the app

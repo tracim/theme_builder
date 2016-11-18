@@ -51,10 +51,12 @@ export class ColorForm extends React.Component {
     this.setState({ ...this.state, colorPicker: { name: '', hex: '#ffffff', display: false } })
   }
 
+  // function called on every color modification by the colorPicker. It update the Store to dynamically update the css of the preview
   handleChangeColor = (name, hex) => {
     this.props.dispatch(changeColor(name, hex))
   }
 
+  // function called on mouse keyup of the colorPicker to update the initial state of the colorPicker which is saved as a local state of colorForm
   handleChangeColorComplete = (name, hex) => {
     this.setState({ ...this.state, colorPicker: { name, hex, display: true } })
   }
