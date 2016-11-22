@@ -11,10 +11,6 @@
     "test:local": "mocha test/**/*.spec.js",
     "deploy": "surge -p dist/ --domain tracim-theme-builder.surge.sh"
   },
-  "repository": {
-    "type": "git",
-    "url": "ssh://git@gitlab.algoo.fr:10022/come/tracim_theme_ui.git"
-  },
   "keywords": [
     "Tracim"
   ],
