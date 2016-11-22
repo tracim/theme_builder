@@ -8,7 +8,8 @@
     "servdev": "webpack-dev-server --watch --colors --inline --hot",
     "build": "NODE_ENV=production webpack -p",
     "test": "mocha test/**/*.spec.js -R xunit test/ > test-reports.xml",
-    "test:local": "mocha test/**/*.spec.js"
+    "test:local": "mocha test/**/*.spec.js",
+    "deploy": "surge -p dist/ --domain tracim-theme-builder.surge.sh"
   },
   "repository": {
     "type": "git",
@@ -51,6 +52,7 @@
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.1",
+    "surge": "^0.18.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-bundle-analyzer": "^1.4.1"
