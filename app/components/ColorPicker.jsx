@@ -8,7 +8,7 @@ export function ColorPicker ({ colorName, colorHex, onClosePicker, onChangeColor
     <div className='colorpicker'>
       <div className='colorpicker__head'>
         <span className='colorpicker__head__colorname'>
-          { __().colorPickerLabel }
+          { __('colorPickerLabel') }
         </span>
         <span className='colorpicker__head__close' onClick={onClosePicker}>
           <i className='fa fa-close' />
