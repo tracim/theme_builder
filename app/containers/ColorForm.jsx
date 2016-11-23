@@ -110,7 +110,7 @@ export class ColorForm extends React.Component {
           <div className='form__help' onClick={this.handleOpenHelpDialog}>
             <i className='fa fa-lg fa-lightbulb-o' aria-hidden='true' />
             <br />
-            { __().labelHelpBtn }
+            { __('labelHelpBtn') }
           </div>
 
           <DialogHelp
@@ -120,7 +120,7 @@ export class ColorForm extends React.Component {
 
           <div className='form__lang'>
             <label htmlFor='langSelector'>
-              { __().labelSelectLang }
+              { __('labelSelectLang') }
             </label>
             <select id='langSelector' onChange={this.handleLangSelection} value={activeLang}>
               <option value='en'>English</option>
@@ -128,11 +128,11 @@ export class ColorForm extends React.Component {
             </select>
           </div>
 
-          <button id='resetColors' className='form__btn btn' onClick={this.handleOpenResetDialog} title={__().btnReset}>
+          <button id='resetColors' className='form__btn btn' onClick={this.handleOpenResetDialog} title={__('btnReset')}>
             <i className='fa fa-lg fa-step-backward' />
           </button>
 
-          <button id='buildColors' className='form__btn btn btnBuild' onClick={this.handleOpenBuildDialog} title={__().btnValidate} >
+          <button id='buildColors' className='form__btn btn btnBuild' onClick={this.handleOpenBuildDialog} title={__('btnValidate')} >
             <i className='fa fa-lg fa-gears' />
           </button>
 
@@ -140,7 +140,7 @@ export class ColorForm extends React.Component {
 
           <div className='form__advancedopt'>
             <div className='form__advancedopt__toggle' onClick={() => dispatch(toggleAdvOpt())}>
-              { showAdvancedOpt ? 'v' : 'x' }{ __().btnAdvOpt }
+              { showAdvancedOpt ? 'v' : 'x' }{ __('btnAdvOpt') }
             </div>
             <ReactCSSTransitionGroup transitionName='advOptLineAnim' transitionEnterTimeout={300} transitionLeaveTimeout={200}>
               { showAdvancedOpt && <div className='advOptLineAnim' /> }
@@ -154,14 +154,14 @@ export class ColorForm extends React.Component {
           {/* Reset Dialog */}
           <Dialog
             display={this.state.displayResetDialog}
-            msg={__().dialogReset}
+            msg={__('dialogReset')}
             onValidate={this.handleResetColor}
             onCancel={this.handleCloseDialog}
           />
           {/* Build Dialog */}
           <Dialog
             display={this.state.displayBuildDialog}
-            msg={__().dialogBuild}
+            msg={__('dialogBuild')}
             onValidate={this.handleBuildColor}
             onCancel={this.handleCloseDialog}
           />

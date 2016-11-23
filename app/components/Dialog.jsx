@@ -14,10 +14,10 @@ export function Dialog (props) {
           </div>
           <div className='modal-footer'>
             <button type='button' className='btn btn-default' data-dismiss='modal' onClick={props.onCancel}>
-              {__().dialogBtnCancel}
+              {__('dialogBtnCancel')}
             </button>
             <button type='button' className='dialog__btn__validate btn btn-primary' onClick={props.onValidate}>
-              {__().dialogBtnValidate}
+              {__('dialogBtnValidate')}
             </button>
           </div>
         </div>
@@ -42,14 +42,14 @@ export function DialogHelp (props) {
             <button type='button' className='close' data-dismiss='modal' aria-label='Close' onClick={props.onValidate}>
               <span aria-hidden='true'>&times;</span>
             </button>
-            <h4 className='modal-title'>{__().dialogHelp}</h4>
+            <h4 className='modal-title'>{__('dialogHelp')}</h4>
           </div>
           <div className='modal-body'>
             img goes here
           </div>
           <div className='modal-footer'>
             <button type='button' className='dialog__btn__validate btn btn-primary' onClick={props.onValidate}>
-              {__().dialogBtnValidate}
+              {__('dialogBtnValidate')}
             </button>
           </div>
         </div>

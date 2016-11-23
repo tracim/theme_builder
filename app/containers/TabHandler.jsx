@@ -28,10 +28,10 @@ export class TabHandler extends React.Component {
         { isSaasInstance ? (
           <div className='full-height'>
             <div className={classnames('tabhandler__title', activeTab === 0 && 'active')} onClick={() => dispatch(switchTab(0))}>
-              { __().tabTitle0 }
+              { __('tabTitle0') }
             </div>
             <div className={classnames('tabhandler__title', activeTab === 1 && 'active')} onClick={() => dispatch(switchTab(1))}>
-              { __().tabTitle1 }
+              { __('tabTitle1') }
             </div>
             <OneTab active={activeTab === 0}>
               <Preview propColor={mapColorForPreview} />
