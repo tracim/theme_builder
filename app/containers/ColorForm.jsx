@@ -101,7 +101,7 @@ export class ColorForm extends React.Component {
   }
 
   render () {
-    const { activeLang, showAdvancedOpt, colorList, dispatch } = this.props
+    const { activeLang, showAdvancedOpt, colorList, isSaasInstance, dispatch } = this.props
 
     return (
       <div className='form__wrapper'>
@@ -161,7 +161,7 @@ export class ColorForm extends React.Component {
           {/* Build Dialog */}
           <Dialog
             display={this.state.displayBuildDialog}
-            msg={__('dialogBuild')}
+            msg={isSaasInstance ? __('dialogBuild') : __('dialogBuildSaas')}
             onValidate={this.handleBuildColor}
             onCancel={this.handleCloseDialog}
           />
@@ -183,8 +183,9 @@ export class ColorForm extends React.Component {
 
 }
 
-const mapStateToProps = ({ lang, showAdvancedOpt, color }) => ({
+const mapStateToProps = ({ lang, showAdvancedOpt, color, config: { isSaasInstance } }) => ({
   showAdvancedOpt,
+  isSaasInstance,
   activeLang: lang,
   colorList: color
 })

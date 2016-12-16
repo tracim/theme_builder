@@ -40,8 +40,12 @@ const tradList = {
     en: 'Are you sure ?'
   },
   dialogBuild: {
-    fr: 'Etes-vous sur ?',
-    en: 'Are you sure ?'
+    fr: 'Vous êtes sur le point de générer et télécharger le nouveau thème (fichier css)',
+    en: 'You are about to generate and download the new theme (css file)'
+  },
+  dialogBuildSaas: {
+    fr: 'Vous êtes sur le point de générer et appliquer le theme à votre instance de Tracim',
+    en: 'You are about to generate and apply the theme to your Tracim instance'
   },
   dialogBtnValidate: {
     fr: 'Valider',
