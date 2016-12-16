@@ -25,11 +25,11 @@ const tradList = {
   },
   btnAdvOptClose: {
     fr: ' Plus de couleurs',
-    en: " More colors"
+    en: ' More colors'
   },
   btnAdvOptOpen: {
     fr: ' Moins de couleurs',
-    en: " Less colors"
+    en: ' Less colors'
   },
   colorPickerLabel: {
     fr: 'Choisissez votre couleur',

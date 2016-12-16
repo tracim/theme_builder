@@ -140,7 +140,7 @@ export class ColorForm extends React.Component {
 
           <div className='form__advancedopt'>
             <div className='form__advancedopt__toggle' onClick={() => dispatch(toggleAdvOpt())}>
-              { showAdvancedOpt ? <i className="fa fa-lg fa-chevron-down" /> : <i className="fa fa-lg fa-close" /> }
+              { showAdvancedOpt ? <i className='fa fa-lg fa-chevron-down' /> : <i className='fa fa-lg fa-close' /> }
               { showAdvancedOpt ? __('btnAdvOptOpen') : __('btnAdvOptClose') }
             </div>
             <ReactCSSTransitionGroup transitionName='advOptLineAnim' transitionEnterTimeout={300} transitionLeaveTimeout={200}>
