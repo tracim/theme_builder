@@ -23,9 +23,13 @@ const tradList = {
     fr: 'Générer votre thème',
     en: 'Generate your theme'
   },
-  btnAdvOpt: {
-    fr: ' Autre',
-    en: ' More'
+  btnAdvOptClose: {
+    fr: ' Plus de couleurs',
+    en: " More colors"
+  },
+  btnAdvOptOpen: {
+    fr: ' Moins de couleurs',
+    en: " Less colors"
   },
   colorPickerLabel: {
     fr: 'Choisissez votre couleur',
