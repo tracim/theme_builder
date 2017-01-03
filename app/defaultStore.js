@@ -25,6 +25,46 @@ export const defaultStore = {
       },
       advancedOpt: false
     }, {
+      name: 'text-menu',
+      hex: '#ddd',
+      label: {
+        fr: 'Texte des menus',
+        en: 'Menus text color'
+      },
+      advancedOpt: false
+    }, {
+      name: 'text-menu:hover',
+      hex: '#333',
+      label: {
+        fr: 'Texte des menus au survol',
+        en: 'Menus text color on mouseover'
+      },
+      advancedOpt: false
+    }, {
+      name: 'text-menu-bg:hover',
+      hex: '#eee',
+      label: {
+        fr: 'Couleur de fond des menus au survol',
+        en: 'Background color text menus on mouseover'
+      },
+      advancedOpt: false
+    }, {
+      name: 'text-menu-clicked',
+      hex: '#333',
+      label: {
+        fr: 'Couleur du texte du menu sélectionné',
+        en: 'Selected menu color'
+      },
+      advancedOpt: false
+    }, {
+      name: 'text-menu-bg-clicked',
+      hex: '#ddd',
+      label: {
+        fr: 'Couleur du fond du menu sélectionné',
+        en: 'Selected menu background color'
+      },
+      advancedOpt: false
+    }, {
       name: 'brand-success',
       hex: '#5cb85c',
       label: {

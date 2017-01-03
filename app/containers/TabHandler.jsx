@@ -20,7 +20,12 @@ export class TabHandler extends React.Component {
       brandSuccess: colorList.find((item) => item.name === 'brand-success').hex,
       brandInfo: colorList.find((item) => item.name === 'brand-info').hex,
       brandWarning: colorList.find((item) => item.name === 'brand-warning').hex,
-      brandDanger: colorList.find((item) => item.name === 'brand-danger').hex
+      brandDanger: colorList.find((item) => item.name === 'brand-danger').hex,
+      menuColor: colorList.find((item) => item.name === 'text-menu').hex,
+      menuColorHover: colorList.find((item) => item.name === 'text-menu:hover').hex,
+      menuColorBgHover: colorList.find((item) => item.name === 'text-menu-bg:hover').hex,
+      menuClickedColor: colorList.find((item) => item.name === 'text-menu-clicked').hex,
+      menuClickedColorBg: colorList.find((item) => item.name === 'text-menu-bg-clicked').hex
     }
 
     return (

@@ -5,7 +5,7 @@
   "main": "app.jsx",
   "scripts": {
     "start": "NODE_ENV=development && webpack --watch",
-    "servdev": "webpack-dev-server --watch --colors --inline --hot --content-base dist/",
+    "servdev": "webpack-dev-server --port 3031 --watch --colors --inline --hot --content-base dist/",
     "build": "NODE_ENV=production webpack -p",
     "test": "mocha test/**/*.spec.js -R xunit test/ > test-reports.xml",
     "test:local": "mocha test/**/*.spec.js",
@@ -16,9 +16,9 @@
   ],
   "author": "Côme Huguiès",
   "license": "ISC",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/tracim/theme_builder.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tracim/theme_builder.git"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",
@@ -54,6 +54,7 @@
     "webpack-bundle-analyzer": "^1.4.1"
   },
   "dependencies": {
+    "aphrodite": "^1.1.0",
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
     "font-awesome": "^4.6.3",

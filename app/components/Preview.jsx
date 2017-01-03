@@ -1,12 +1,13 @@
 import React from 'react'
 import logoTracim from '../image/logo_tracim.png'
+import { StyleSheet, css } from 'aphrodite/no-important'
 
 import __ from '../trad.js'
 
 export function Preview (props) {
   const { propColor } = props
 
-  const style = {
+  const style = StyleSheet.create({
     styleHeader: {
       backgroundColor: propColor.brandPrimary
     },
@@ -40,25 +41,36 @@ export function Preview (props) {
       backgroundColor: propColor.brandDanger
     },
     styleBtnDefault: {},
-    styleBtnLink: {}
-  }
+    styleBtnLink: {},
+    styleMenuColor: {
+      color: propColor.menuColor,
+      ':hover': {
+        color: propColor.menuColorHover,
+        backgroundColor: propColor.menuColorBgHover
+      }
+    },
+    styleMenuSelectedColor: {
+      color: propColor.menuClickedColor,
+      backgroundColor: propColor.menuClickedColorBg
+    }
+  })
 
   return (
     <div className='preview'>
       <div className='tracim'>
-        <div className='tracim__header' style={style.styleHeader}>
+        <div className={'tracim__header ' + css(style.styleHeader)} >
           <div className='tracim__header__logo'>
             <img src={logoTracim} />
           </div>
-          <div className='tracim__header__link'>
+          <div className={'tracim__header__link ' + css(style.styleMenuColor)}>
             <i className='fa fa-home fa-lg' />
             { __('previewHome') }
           </div>
-          <div className='tracim__header__link'>
+          <div className={'tracim__header__link ' + css(style.styleMenuColor)}>
             <i className='fa fa-calendar' />
             { __('previewCalendar') }
           </div>
-          <div className='tracim__header__linkright'>
+          <div className={'tracim__header__linkright ' + css(style.styleMenuColor)}>
             <i className='fa fa-lg fa-user' />
             Mr Doe
           </div>
@@ -66,43 +78,43 @@ export function Preview (props) {
             <input type='text' placeholder={__('previewSearchInput')} />
           </div>
         </div>
-        <div className='tracim__sidebar-left' style={style.styleSidebarLeft}>
+        <div className={'tracim__sidebar-left ' + css(style.styleSidebarLeft)}>
           <div className='tracim__sidebar-left__btntoggle'>
             <i className='fa fa-angle-double-right' />
           </div>
           <div className='tracim__sidebar-left__menu'>
             <div className='tracim__sidebar-left__menu__title'>{ __('previewWorkspaceTitle') }</div>
-            <div className='tracim__sidebar-left__menu__item open'>
+            <div className={'tracim__sidebar-left__menu__item open ' + css(style.styleMenuColor)}>
               <i className='fa fa-sort-desc tracim__sidebar-left__menu__item__iconmenu' />
               <i className='fa fa-bank tracim__sidebar-left__menu__item__iconpicto' />
               { __('previewWorkspace0') }
             </div>
-            <div className='tracim__sidebar-left__menu__item__submenu'>
+            <div className={'tracim__sidebar-left__menu__item__submenu ' + css(style.styleMenuColor)}>
               <i className='fa fa-sort-desc tracim__sidebar-left__menu__item__iconmenu' />
               <i className='fa fa-folder-open-o tracim__sidebar-left__menu__item__iconpicto' />
               { __('previewWorkspace0Sub0') }
             </div>
-            <div className='tracim__sidebar-left__menu__item__submenu'>
+            <div className={'tracim__sidebar-left__menu__item__submenu ' + css(style.styleMenuColor)}>
               <i className='fa fa-sort-desc tracim__sidebar-left__menu__item__iconmenu' />
               <i className='fa fa-folder-open-o tracim__sidebar-left__menu__item__iconpicto' />
               { __('previewWorkspace0Sub1') }
             </div>
-            <div className='tracim__sidebar-left__menu__item'>
+            <div className={'tracim__sidebar-left__menu__item ' + css(style.styleMenuColor)}>
               <i className='fa fa-sort-desc tracim__sidebar-left__menu__item__iconmenu' />
               <i className='fa fa-bank tracim__sidebar-left__menu__item__iconpicto' />
               { __('previewWorkspace1') }
             </div>
-            <div className='tracim__sidebar-left__menu__item'>
+            <div className={'tracim__sidebar-left__menu__item ' + css(style.styleMenuSelectedColor)}>
               <i className='fa fa-sort-desc tracim__sidebar-left__menu__item__iconmenu' />
               <i className='fa fa-bank tracim__sidebar-left__menu__item__iconpicto' />
               { __('previewWorkspace2') }
             </div>
-            <div className='tracim__sidebar-left__menu__item'>
+            <div className={'tracim__sidebar-left__menu__item ' + css(style.styleMenuColor)}>
               <i className='fa fa-sort-desc tracim__sidebar-left__menu__item__iconmenu' />
               <i className='fa fa-bank tracim__sidebar-left__menu__item__iconpicto' />
               { __('previewWorkspace3') }
             </div>
-            <div className='tracim__sidebar-left__menu__item'>
+            <div className={'tracim__sidebar-left__menu__item ' + css(style.styleMenuColor)}>
               <i className='fa fa-sort-desc tracim__sidebar-left__menu__item__iconmenu' />
               <i className='fa fa-bank tracim__sidebar-left__menu__item__iconpicto' />
               { __('previewWorkspace4') }
@@ -110,7 +122,7 @@ export function Preview (props) {
           </div>
         </div>
         <div className='tracim__content'>
-          <div className='tracim__content__header' style={style.styleContentHeader}>
+          <div className={'tracim__content__header ' + css(style.styleContentHeader)}>
             <div className='tracim__content__header__title'>
               <i className='fa fa-fw fa-lg fa-home' />
               { __('previewContentTitle') }
@@ -121,21 +133,21 @@ export function Preview (props) {
           <div className='tracim__content__bootstrap'>
             <div className='tracim__content__boostrap__item'>
               <div className='tracim__content__bootstrap__item__title'>Buttons</div>
-              <button type='button' className='btn btn-primary' style={style.styleBtnPrimary}>Primary</button>
-              <button type='button' className='btn btn-success' style={style.styleBtnSuccess}>Success</button>
-              <button type='button' className='btn btn-info' style={style.styleBtnInfo}>Info</button>
-              <button type='button' className='btn btn-warning' style={style.styleBtnWarning}>Warning</button>
-              <button type='button' className='btn btn-danger' style={style.styleBtnDanger}>Danger</button>
-              <button type='button' className='btn btn-default' style={style.styleBtnDefault}>Default</button>
-              <button type='button' className='btn btn-link' style={style.styleBtnLink}>Link</button>
+              <button type='button' className={'btn btn-primary ' + css(style.styleBtnPrimary)}>Primary</button>
+              <button type='button' className={'btn btn-success ' + css(style.styleBtnSuccess)}>Success</button>
+              <button type='button' className={'btn btn-info ' + css(style.styleBtnInfo)}>Info</button>
+              <button type='button' className={'btn btn-warning ' + css(style.styleBtnWarning)}>Warning</button>
+              <button type='button' className={'btn btn-danger ' + css(style.styleBtnDanger)}>Danger</button>
+              <button type='button' className={'btn btn-default ' + css(style.styleBtnDefault)}>Default</button>
+              <button type='button' className={'btn btn-link ' + css(style.styleBtnLink)}>Link</button>
             </div>
             <div className='tracim__content__boostrap__item'>
               <div className='tracim__content__bootstrap__item__title'>Contextual backgrounds</div>
-              <p className='bg-primary' style={style.styleBgPrimary}>primary</p>
-              <p className='bg-success' style={style.styleBgSuccess}>success</p>
-              <p className='bg-info' style={style.styleBgInfo}>info</p>
-              <p className='bg-warning' style={style.styleBgWarning}>warning</p>
-              <p className='bg-danger' style={style.styleBgDanger}>danger</p>
+              <p className={'bg-primary ' + css(style.styleBgPrimary)}>primary</p>
+              <p className={'bg-success ' + css(style.styleBgSuccess)}>success</p>
+              <p className={'bg-info ' + css(style.styleBgInfo)}>info</p>
+              <p className={'bg-warning ' + css(style.styleBgWarning)}>warning</p>
+              <p className={'bg-danger ' + css(style.styleBgDanger)}>danger</p>
             </div>
           </div>
           */}
@@ -190,7 +202,7 @@ export function Preview (props) {
             </div>
           </div>
         </div>
-        <div className='tracim__sidebar-right' style={style.styleSidebarRight}>
+        <div className={'tracim__sidebar-right ' + css(style.styleSidebarRight)}>
           <div className='tracim__sidebar-right__btngroup'>
             <button type='button' className='tracim__sidebar-right__btngroup__btn'>
               <i className='fa fa-edit' />
