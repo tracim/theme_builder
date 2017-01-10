@@ -43,7 +43,9 @@ export function Preview (props) {
     styleBtnDefault: {},
     styleBtnLink: {},
     styleMenuColor: {
-      color: propColor.menuColor,
+      color: propColor.menuColor
+    },
+    styleMenuColorHover: {
       ':hover': {
         color: propColor.menuColorHover,
         backgroundColor: propColor.menuColorBgHover
@@ -83,23 +85,23 @@ export function Preview (props) {
             <i className='fa fa-angle-double-right' />
           </div>
           <div className='tracim__sidebar-left__menu'>
-            <div className='tracim__sidebar-left__menu__title'>{ __('previewWorkspaceTitle') }</div>
-            <div className={'tracim__sidebar-left__menu__item open ' + css(style.styleMenuColor)}>
+            <div className={'tracim__sidebar-left__menu__title ' + css(style.styleMenuColor)}>{ __('previewWorkspaceTitle') }</div>
+            <div className={'tracim__sidebar-left__menu__item open ' + css(style.styleMenuColor, style.styleMenuColorHover)}>
               <i className='fa fa-sort-desc tracim__sidebar-left__menu__item__iconmenu' />
               <i className='fa fa-bank tracim__sidebar-left__menu__item__iconpicto' />
               { __('previewWorkspace0') }
             </div>
-            <div className={'tracim__sidebar-left__menu__item__submenu ' + css(style.styleMenuColor)}>
+            <div className={'tracim__sidebar-left__menu__item__submenu ' + css(style.styleMenuColor, style.styleMenuColorHover)}>
               <i className='fa fa-sort-desc tracim__sidebar-left__menu__item__iconmenu' />
               <i className='fa fa-folder-open-o tracim__sidebar-left__menu__item__iconpicto' />
               { __('previewWorkspace0Sub0') }
             </div>
-            <div className={'tracim__sidebar-left__menu__item__submenu ' + css(style.styleMenuColor)}>
+            <div className={'tracim__sidebar-left__menu__item__submenu ' + css(style.styleMenuColor, style.styleMenuColorHover)}>
               <i className='fa fa-sort-desc tracim__sidebar-left__menu__item__iconmenu' />
               <i className='fa fa-folder-open-o tracim__sidebar-left__menu__item__iconpicto' />
               { __('previewWorkspace0Sub1') }
             </div>
-            <div className={'tracim__sidebar-left__menu__item ' + css(style.styleMenuColor)}>
+            <div className={'tracim__sidebar-left__menu__item ' + css(style.styleMenuColor, style.styleMenuColorHover)}>
               <i className='fa fa-sort-desc tracim__sidebar-left__menu__item__iconmenu' />
               <i className='fa fa-bank tracim__sidebar-left__menu__item__iconpicto' />
               { __('previewWorkspace1') }
@@ -109,12 +111,12 @@ export function Preview (props) {
               <i className='fa fa-bank tracim__sidebar-left__menu__item__iconpicto' />
               { __('previewWorkspace2') }
             </div>
-            <div className={'tracim__sidebar-left__menu__item ' + css(style.styleMenuColor)}>
+            <div className={'tracim__sidebar-left__menu__item ' + css(style.styleMenuColor, style.styleMenuColorHover)}>
               <i className='fa fa-sort-desc tracim__sidebar-left__menu__item__iconmenu' />
               <i className='fa fa-bank tracim__sidebar-left__menu__item__iconpicto' />
               { __('previewWorkspace3') }
             </div>
-            <div className={'tracim__sidebar-left__menu__item ' + css(style.styleMenuColor)}>
+            <div className={'tracim__sidebar-left__menu__item ' + css(style.styleMenuColor, style.styleMenuColorHover)}>
               <i className='fa fa-sort-desc tracim__sidebar-left__menu__item__iconmenu' />
               <i className='fa fa-bank tracim__sidebar-left__menu__item__iconpicto' />
               { __('previewWorkspace4') }
