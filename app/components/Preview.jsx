@@ -79,6 +79,10 @@ export function Preview (props) {
           <div className='tracim__header__linkrightform'>
             <input type='text' placeholder={__('previewSearchInput')} />
           </div>
+          <div className={'tracim__header__linkright ' + css(style.styleMenuColor)}>
+            <i className='fa fa-lg fa-eye' />
+            {__('previewReadmode')}
+          </div>
         </div>
         <div className={'tracim__sidebar-left ' + css(style.styleSidebarLeft)}>
           <div className='tracim__sidebar-left__btntoggle'>
@@ -154,9 +158,22 @@ export function Preview (props) {
           </div>
           */}
           <div className='tracim__content__dashboard'>
-            <div className='tracim__content__dashboard__title'>
+            <div className='tracim__content__dashboard__title recent_activities active'>
+              <i className='fa fa-line-chart' />
+              { __('previewRecentActivitiesTitle') }
+              <span className='tracim__content__dashboard__title-lastactivity'>[2 heures]</span>
+            </div>
+            <div className='tracim__content__dashboard__title unread'>
+              <div className='tracim__content__dashboard__title-news fa-stack'>
+                <i className='fa fa-bookmark fa-stack-1x' />
+                <i className='tracim__content__dashboard__title-news__number fa-stack-1x'>10+</i>
+              </div>
               <i className='fa fa-eye-slash' />
               { __('previewUnreadTitle') }
+            </div>
+            <div className='tracim__content__dashboard__title workspaces'>
+              <i className='fa fa-bank' />
+              { __('previewWorkspacesTitle') }
             </div>
             <div className='tracim__content__dashboard__content'>
               <div className='tracim__content__dashboard__content__item'>
@@ -213,24 +230,6 @@ export function Preview (props) {
             <button type='button' className='tracim__sidebar-right__btngroup__btn'>
               <i className='fa fa-key' />
               { __('previewSidebarRightBtn1') }
-            </button>
-          </div>
-          <div className='tracim__sidebar-right__title'>
-            <i className='fa fa-flash' />
-            { __('previewSidebarRightSeparator') }
-          </div>
-          <div className='tracim__sidebar-right__btngroup'>
-            <button type='button' className='tracim__sidebar-right__btngroup__btn'>
-              <i className='fa fa-eye-slash' />
-              { __('previewSidebarRightBtn2') }
-            </button>
-            <button type='button' className='tracim__sidebar-right__btngroup__btn'>
-              <i className='fa fa-line-chart' />
-              { __('previewSidebarRightBtn3') }
-            </button>
-            <button type='button' className='tracim__sidebar-right__btngroup__btn'>
-              <i className='fa fa-bank' />
-              { __('previewSidebarRightBtn4') }
             </button>
           </div>
         </div>

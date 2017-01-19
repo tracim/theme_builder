@@ -23,6 +23,7 @@ export class ColorForm extends React.Component {
         name: '',
         hex: '#ffffff'
       },
+      openedColor: '',
       displayHelpDialog: false,
       displayResetDialog: false,
       displayBuildDialog: false
@@ -44,11 +45,11 @@ export class ColorForm extends React.Component {
       ? { name: '', hex: '#ffffff', display: false }
       : { name, hex, display: true }
 
-    this.setState({ ...this.state, colorPicker: updatedColorPicker })
+    this.setState({ ...this.state, colorPicker: updatedColorPicker, openedColor: name === this.state.colorPicker.name ? '' : name })
   }
 
   handleClosePicker = () => {
-    this.setState({ ...this.state, colorPicker: { name: '', hex: '#ffffff', display: false } })
+    this.setState({ ...this.state, colorPicker: { name: '', hex: '#ffffff', display: false }, openedColor: '' })
   }
 
   // function called on every color modification by the colorPicker. It update the Store to dynamically update the css of the preview
@@ -81,7 +82,7 @@ export class ColorForm extends React.Component {
       body: JSON.stringify({ variables: varList })
     })
     .then(response => response.text())
-    .then((responseText) => {
+    .then(responseText => {
       const FileSaver = require('../lib/FileSaver.js')
 
       const blob = new Blob([responseText], { type: 'text/plain;charset=utf-8' })
@@ -89,10 +90,7 @@ export class ColorForm extends React.Component {
 
       this.props.dispatch(requestAsyncEnd()) // to hide the loader
     })
-    .catch(function (e) {
-      console.log('Error in generate-css request :')
-      console.log(e)
-    })
+    .catch((e) => console.log('Error in generate-css request :', e))
   }
 
   handleLangSelection = (e) => {
@@ -105,18 +103,23 @@ export class ColorForm extends React.Component {
 
     return (
       <div className='form__wrapper'>
-        <div className='form'>
 
-          <div className='form__help' onClick={this.handleOpenHelpDialog}>
-            <i className='fa fa-lg fa-lightbulb-o' aria-hidden='true' />
-            <br />
-            { __('labelHelpBtn') }
+        { false && // uncomment this and the bellow div
+          <div>
+            <div className='form__help' onClick={this.handleOpenHelpDialog}>
+              <i className='fa fa-lg fa-lightbulb-o' aria-hidden='true' />
+              <br />
+              { __('labelHelpBtn') }
+            </div>
+
+            <DialogHelp
+              display={this.state.displayHelpDialog}
+              onValidate={this.handleCloseDialog}
+            />
           </div>
+        }
 
-          <DialogHelp
-            display={this.state.displayHelpDialog}
-            onValidate={this.handleCloseDialog}
-          />
+        <div className='form'>
 
           <div className='form__lang'>
             <label htmlFor='langSelector'>
@@ -136,21 +139,29 @@ export class ColorForm extends React.Component {
             <i className='fa fa-lg fa-gears' />
           </button>
 
-          { colorList.map((item, i) => !item.advancedOpt && <ColorItem colorItem={item} lang={activeLang} onOpenPicker={() => this.handleOpenPicker(item)} key={i} />) }
+          <div className='clearfix' />
 
-          <div className='form__advancedopt'>
-            <div className='form__advancedopt__toggle' onClick={() => dispatch(toggleAdvOpt())}>
-              { showAdvancedOpt ? <i className='fa fa-lg fa-chevron-down' /> : <i className='fa fa-lg fa-close' /> }
-              { showAdvancedOpt ? __('btnAdvOptOpen') : __('btnAdvOptClose') }
-            </div>
-            <ReactCSSTransitionGroup transitionName='advOptLineAnim' transitionEnterTimeout={300} transitionLeaveTimeout={200}>
-              { showAdvancedOpt && <div className='advOptLineAnim' /> }
-            </ReactCSSTransitionGroup>
-
-            <div className='form__advancedopt__list'>
-              { showAdvancedOpt && colorList.map((item, i) => item.advancedOpt && <ColorItem colorItem={item} lang={activeLang} onOpenPicker={() => this.handleOpenPicker(item)} key={i} />) }
-            </div>
+          <div className='form__input-all'>
+            { colorList.map((item, i) => !item.advancedOpt &&
+              <ColorItem colorItem={item} lang={activeLang} onOpenPicker={() => this.handleOpenPicker(item)} isOpen={this.state.openedColor === item.name} key={i} />)
+            }
           </div>
+
+          { false && // remove this test to uncomment this block. I dont comment it so I dont have to also comment all the var used in it because standard.js would whine
+            <div className='form__advancedopt'>
+              <div className='form__advancedopt__toggle' onClick={() => dispatch(toggleAdvOpt())}>
+                { showAdvancedOpt ? <i className='fa fa-lg fa-chevron-down' /> : <i className='fa fa-lg fa-close' /> }
+                { showAdvancedOpt ? __('btnAdvOptOpen') : __('btnAdvOptClose') }
+              </div>
+              <ReactCSSTransitionGroup transitionName='advOptLineAnim' transitionEnterTimeout={300} transitionLeaveTimeout={200}>
+                { showAdvancedOpt && <div className='advOptLineAnim' /> }
+              </ReactCSSTransitionGroup>
+
+              <div className='form__advancedopt__list'>
+                { showAdvancedOpt && colorList.map((item, i) => item.advancedOpt && <ColorItem colorItem={item} lang={activeLang} onOpenPicker={() => this.handleOpenPicker(item)} key={i} />) }
+              </div>
+            </div>
+          }
 
           {/* Reset Dialog */}
           <Dialog

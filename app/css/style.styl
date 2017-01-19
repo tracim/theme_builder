@@ -17,10 +17,11 @@ html, body
   z-index 1
   i
     margin-top 15%
+$formWidth = 300px
 .form
-  width 165px
+  width $formWidth
   max-height 100%
-  padding 0 0 20px 0
+  padding 0 20px 20px 20px
   vertical-align top
   &__wrapper
     display inline-block
@@ -39,7 +40,7 @@ html, body
     font-weight bold
     cursor pointer
   &__lang
-    padding 10px 8px 5px 2px
+    padding 10px 0px 5px 0px
     font-weight normal
     font-size 13px
     label
@@ -53,15 +54,19 @@ html, body
       cursor pointer
   &__label
     position relative
-    display block
-    margin 0 0 3px 10px
+    display inline-block
+    width calc(100% - 105px)
+    vertical-align middle
+    margin 0 5px 0px 0px
     font-weight normal
+    cursor pointer
     &__detail
       font-size 13px
       color #666
   &__input
-    margin 0 10px 0 0
-    text-align right
+    display inline-block
+    width 100px
+    vertical-align middle
     &__selector
       display inline-block
       width 70px
@@ -72,7 +77,21 @@ html, body
       text-align center
       font-family monospace
     &__wrapper
-      margin 12px 0 15px 0
+      position relative
+      padding 13px 0px 13px 3px
+      cursor pointer
+      &::after
+        content ''
+        position absolute
+        left l = 20px
+        bottom 0
+        width $formWidth - 40 - (2*l) // 40 is for the padding left and right of .form
+        height 1px
+        background-color #ccc
+      &:last-child::after
+        display none
+      &.active
+        background-color #ccc
     &__preview
       display inline-block
       border 1px solid #CCC
@@ -80,9 +99,9 @@ html, body
       height 24px
       vertical-align middle
   &__btn
-    display inline-block
+    float left
     width 40%
-    margin 10px 8px 0px 8px
+    margin 10px 0px
     padding 12px 0px
     background-color #333
     color #FFF
@@ -91,6 +110,7 @@ html, body
     &:hover, &:focus
       color #FFF
     &.btnBuild
+      float right
       background-color #fff
       color #333
       border 1px solid #333
@@ -127,7 +147,7 @@ html, body
 .colorpicker
   position absolute
   top 0px
-  left 175px
+  left $formWidth
   padding 3px 0 0 3px
   background-color #e2e2e2
   z-index 1
@@ -161,7 +181,7 @@ html, body
 $tabHeight = 31px // calculated with padding of .tabhandler__title
 .tabhandler
   display inline-block
-  width calc(100% - 185px)
+  width "calc(100% - %s)" % ($formWidth + 20) // 20 is for the potential ascensor
   height 100%
   &__title
     display inline-block
@@ -286,18 +306,72 @@ i
       &__title
         font-size 18px
     &__dashboard
-      margin 30px
-      border 1px solid #dff0d8
-      border-radius 4px
+      margin 10px
       &__title
-        padding 10px 15px
-        color #3c763d
-        background-color #dff0d8
-        font-size 20px
+        display inline-block
+        vertical-align bottom
+        margin-right 3px
+        padding 3px 25px
+        font-size 14px
+        font-weight bold
+        border-top-left-radius 5px
+        border-top-right-radius 5px
+        border 2px solid
+        border-bottom-width 0px
+        cursor pointer
+        text-align center
         i
           margin-right 12px
+        &.active
+          padding 5px 25px
+        &.recent_activities
+          border-color #fcf8e3
+          background-color #faebcc
+          color #8a6d3b
+          &:hover
+            border-color: #fcf8e3;
+            background-color: #faebcc;
+            color: #8a6d3b;
+        &.unread
+          border-color #d6e9c6
+          background-color #dff0d8
+          color #3c763d
+          &:hover
+            border-color: #dff0d8;
+            background-color: #d6e9c6;
+            color: #3c763d;
+        &.workspaces
+          border-color #bce8f1
+          background-color #d9edf7
+          color #31708f
+          &:hover
+            border-color: #d9edf7;
+            background-color: #bce8f1;
+            color: #31708f;
+        &-lastactivity
+          margin-left 5px
+          font-size 12px
+          font-weight normal
+          color #b35454
+        &-news
+          float: right;
+          position: relative;
+          top: -18px;
+          right: -28px;
+          height: auto;
+          color: #b35454;
+          font-size: 22px;
+          &__number
+            top: -3px;
+            color: #dff0d8;
+            font-size: 10px;
+            font-weight: bold;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            letter-spacing: -1px;
       &__content
         padding 20px 10px 25px 10px
+        border 1px solid #faebcc
+        border-top-width 10px
         &__item
           &:hover
             background-color #f5f5f5

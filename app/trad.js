@@ -71,6 +71,10 @@ const tradList = {
     fr: 'Rechercher ...',
     en: 'Search...'
   },
+  previewReadmode: {
+    fr: 'Mode lecture',
+    en: 'Read mode'
+  },
   previewWorkspaceTitle: {
     fr: 'Espace de travail',
     en: 'Workspace'
@@ -151,9 +155,17 @@ const tradList = {
     fr: 'jours',
     en: 'days'
   },
+  previewRecentActivitiesTitle: {
+    fr: 'Activités récentes',
+    en: 'Recent activities'
+  },
   previewUnreadTitle: {
     fr: 'Non lus',
     en: 'Unread'
+  },
+  previewWorkspacesTitle: {
+    fr: 'Espaces de travail',
+    en: 'Workspaces'
   },
   previewUnread0Name: {
     fr: 'Team building',

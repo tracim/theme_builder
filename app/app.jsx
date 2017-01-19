@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 
 import 'bootstrap/dist/css/bootstrap.css'
-require('./css/style.styl')
 require('./font/font-awesome-4.6.3/css/font-awesome.min.css')
+require('./css/style.styl')
 
 import ThemeChanger from './containers/ThemeChanger.jsx'
 

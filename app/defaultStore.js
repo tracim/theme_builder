@@ -4,8 +4,8 @@ export const defaultStore = {
   showAdvancedOpt: false,
   activeTab: 0,
   config: {
-    urlTracimInstance: 'http://algoo.trac.im/',
-    isSaasInstance: true
+    urlTracimInstance: '',
+    isSaasInstance: false
   },
   color: [
     {
@@ -29,7 +29,7 @@ export const defaultStore = {
       hex: '#ddd',
       label: {
         fr: 'Texte des menus',
-        en: 'Menus text color'
+        en: 'Menu text color'
       },
       advancedOpt: false
     }, {
@@ -37,7 +37,7 @@ export const defaultStore = {
       hex: '#333',
       label: {
         fr: 'Texte des menus au survol',
-        en: 'Menus text color on mouseover'
+        en: 'Menu text color on hover'
       },
       advancedOpt: false
     }, {
@@ -45,7 +45,7 @@ export const defaultStore = {
       hex: '#eee',
       label: {
         fr: 'Couleur de fond des menus au survol',
-        en: 'Background color text menus on mouseover'
+        en: 'Menu background color on hover'
       },
       advancedOpt: false
     }, {
