@@ -1,7 +1,7 @@
 import React from 'react'
 import { ChromePicker } from 'react-color'
 
-export function ColorPicker ({ pickerInfo, onClosePicker, onChangeColor, onChangeColorComplete }) {
+export function ColorPicker ({ pickerInfo, onClosePicker, onChangeColor, onChangeColorComplete, onKeyPress }) {
   return (
     <div className='colorpicker'>
       <div className='colorpicker__head'>
@@ -15,6 +15,7 @@ export function ColorPicker ({ pickerInfo, onClosePicker, onChangeColor, onChang
         color={pickerInfo.hex}
         onChange={(newColor) => onChangeColor(pickerInfo.name, newColor.hex)}
         onChangeComplete={(newColor) => onChangeColorComplete(pickerInfo.name, newColor.hex)}
+        onKeyPress={onKeyPress}
       />
     </div>
   )
