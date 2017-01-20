@@ -18,12 +18,12 @@ describe('<ColorItem />', () => {
       hex: '#BADA55'
     }
     const onOpenPicker = sinon.spy()
-    const wrapper = shallow(<ColorItem colorItem={propColorItem} lang={'fr'} onOpenPicker={onOpenPicker} />)
+    const wrapper = shallow(<ColorItem colorItem={propColorItem} lang={'fr'} onOpenPicker={onOpenPicker} isOpen={true} />)
 
     expect(wrapper.find('div.form__label__detail')).to.contain.text('test-primary-fr')
     expect(wrapper.find('div.form__input__selector')).to.contain.text('#BADA55')
 
-    wrapper.find('div.form__input__selector').simulate('click')
+    wrapper.find('div.form__input__wrapper').simulate('click')
     expect(onOpenPicker).to.have.property('callCount', 1)
   })
 })
