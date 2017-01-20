@@ -5,17 +5,11 @@ export function ColorItem ({ colorItem, lang, onOpenPicker, isOpen }) {
     backgroundColor: colorItem.hex
   }
 
-  let labelForLang
-  if (lang === 'fr') labelForLang = colorItem.label.fr
-  else if (lang === 'en') labelForLang = colorItem.label.en
-  else labelForLang = colorItem.label.en
-  // const labelForLang = (({fr, en}) => lang === 'fr' ? fr : lang === 'en' && en)(colorItem.label)
-
   return (
     <div className={isOpen ? 'form__input__wrapper active' : 'form__input__wrapper'} onClick={onOpenPicker}>
       <label className='form__label'>
         <div className='form__label__detail'>
-          {labelForLang}
+          {colorItem.label[lang]}
         </div>
       </label>
       <div className='form__input'>

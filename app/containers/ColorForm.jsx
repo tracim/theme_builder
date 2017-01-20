@@ -21,6 +21,7 @@ export class ColorForm extends React.Component {
       colorPicker: {
         display: false,
         name: '',
+        label: '',
         hex: '#ffffff'
       },
       openedColor: '',
@@ -40,16 +41,16 @@ export class ColorForm extends React.Component {
   handleOpenResetDialog = () => this.setState({ ...this.state, displayHelpDialog: false, displayResetDialog: true, displayBuildDialog: false })
   handleOpenBuildDialog = () => this.setState({ ...this.state, displayHelpDialog: false, displayResetDialog: false, displayBuildDialog: true })
 
-  handleOpenPicker = ({name, hex}) => {
+  handleOpenPicker = ({name, label, hex}) => {
     const updatedColorPicker = name === this.state.colorPicker.name
-      ? { name: '', hex: '#ffffff', display: false }
-      : { name, hex, display: true }
+      ? { name: '', label: '', hex: '#ffffff', display: false }
+      : { name, label: label[this.props.activeLang],  hex, display: true }
 
     this.setState({ ...this.state, colorPicker: updatedColorPicker, openedColor: name === this.state.colorPicker.name ? '' : name })
   }
 
   handleClosePicker = () => {
-    this.setState({ ...this.state, colorPicker: { name: '', hex: '#ffffff', display: false }, openedColor: '' })
+    this.setState({ ...this.state, colorPicker: { name: '', label: '', hex: '#ffffff', display: false }, openedColor: '' })
   }
 
   // function called on every color modification by the colorPicker. It update the Store to dynamically update the css of the preview
@@ -59,7 +60,7 @@ export class ColorForm extends React.Component {
 
   // function called on mouse keyup of the colorPicker to update the initial state of the colorPicker which is saved as a local state of colorForm
   handleChangeColorComplete = (name, hex) => {
-    this.setState({ ...this.state, colorPicker: { name, hex, display: true } })
+    this.setState({ ...this.state, colorPicker: {...this.state.colorPicker, name, hex, display: true } })
   }
 
   // the syntaxe bellow is viable thx to babel plugin transform-class-properties. It avoids having to bind 'this' to the function in the class' constructor
@@ -181,8 +182,7 @@ export class ColorForm extends React.Component {
         <ReactCSSTransitionGroup transitionName='colorpickerAnim' transitionEnterTimeout={400} transitionLeaveTimeout={250}>
           { this.state.colorPicker.display &&
             <ColorPicker
-              colorName={this.state.colorPicker.name}
-              colorHex={this.state.colorPicker.hex}
+              pickerInfo={this.state.colorPicker}
               onClosePicker={this.handleClosePicker}
               onChangeColor={this.handleChangeColor}
               onChangeColorComplete={this.handleChangeColorComplete}
