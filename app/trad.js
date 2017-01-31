@@ -1,4 +1,8 @@
 const tradList = {
+  appTitle: {
+    fr: 'Générateur de thème Tracim',
+    en: "Tracim's theme generator"
+  },
   tabTitle0: {
     fr: 'Prévisualisation',
     en: 'Preview'
@@ -16,12 +20,12 @@ const tradList = {
     en: 'Language'
   },
   btnReset: {
-    fr: 'Réinitialiser les couleurs',
-    en: 'Reset colors'
+    fr: 'Réinitialiser',
+    en: 'Reset'
   },
   btnValidate: {
-    fr: 'Générer votre thème',
-    en: 'Generate your theme'
+    fr: 'Générer le thème',
+    en: 'Generate the theme'
   },
   btnAdvOptClose: {
     fr: ' Plus de couleurs',

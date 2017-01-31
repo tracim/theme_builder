@@ -3,9 +3,9 @@ import 'whatwg-fetch'
 export const REQUEST_ASYNC_START = 'REQUEST_ASYNC_START'
 export const REQUEST_ASYNC_END = 'REQUEST_ASYNC_END'
 
-export const INIT_COLOR = 'INIT_COLOR'
-export const RESET_COLOR = 'RESET_COLOR'
-export const CHANGE_COLOR = 'CHANGE_COLOR'
+export const INIT_CUSTOMIZABLES = 'INIT_CUSTOMIZABLES'
+export const RESET_CUSTOMIZABLES = 'RESET_CUSTOMIZABLES'
+export const CHANGE_CUSTOMIZABLES = 'CHANGE_CUSTOMIZABLES'
 
 export const CHANGE_LANG = 'CHANGE_LANG'
 
@@ -40,7 +40,7 @@ export function fetchConfig (urlJsonCfg) {
         dispatch(initAdvOpt(json.showAdvancedOpt)),
         dispatch(switchTab(json.activeTab)),
         dispatch(updateConfig(json.config)),
-        dispatch(initColor(json.color))
+        dispatch(initCustomizables(json.customizables))
       ])
     })
     .then(() => dispatch(requestAsyncEnd())) // set isFetching to false to hide the loader
@@ -52,15 +52,15 @@ export function requestAsyncEnd () {
   return { type: REQUEST_ASYNC_END }
 }
 
-export function initColor (colorList) {
-  return { type: INIT_COLOR, colorList }
+export function initCustomizables (customizablesList) {
+  return { type: INIT_CUSTOMIZABLES, customizablesList }
 }
-export function resetColor () {
-  return { type: RESET_COLOR }
+export function resetCustomizables () {
+  return { type: RESET_CUSTOMIZABLES }
 }
 
-export function changeColor (name, hex) {
-  return { type: CHANGE_COLOR, name, hex }
+export function changeCustomizables (name, hex) {
+  return { type: CHANGE_CUSTOMIZABLES, name, hex }
 }
 
 export function initAdvOpt (advOpt) {

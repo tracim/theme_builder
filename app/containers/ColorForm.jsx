@@ -6,7 +6,7 @@ import { Dialog, DialogHelp } from '../components/Dialog.jsx'
 // import DialogHelp from '../components/DialogHelp.jsx'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-import { resetColor, changeColor, changeLang, toggleAdvOpt, requestAsyncStart, requestAsyncEnd } from '../action-creators.js'
+import { resetCustomizables, changeCustomizables, changeLang, toggleAdvOpt, requestAsyncStart, requestAsyncEnd } from '../action-creators.js'
 
 import __ from '../trad.js'
 
@@ -31,8 +31,8 @@ export class ColorForm extends React.Component {
     }
   }
 
-  handleResetColor = () => {
-    this.props.dispatch(resetColor())
+  handleResetCustomizables = () => {
+    this.props.dispatch(resetCustomizables())
     this.handleCloseDialog()
   }
 
@@ -55,7 +55,7 @@ export class ColorForm extends React.Component {
 
   // function called on every color modification by the colorPicker. It update the Store to dynamically update the css of the preview
   handleChangeColor = (name, hex) => {
-    this.props.dispatch(changeColor(name, hex))
+    this.props.dispatch(changeCustomizables(name, hex))
   }
 
   // function called on mouse keyup of the colorPicker to update the initial state of the colorPicker which is saved as a local state of colorForm
@@ -78,7 +78,7 @@ export class ColorForm extends React.Component {
     this.handleCloseDialog()
 
     const varList = {}
-    this.props.colorList.forEach((item) => (varList[item.name] = item.hex))
+    this.props.customizablesList.forEach((item) => (varList[item.name] = item.hex))
 
     fetch('http://theme.tracim.org/api/generate-css', {
       method: 'POST',
@@ -107,19 +107,21 @@ export class ColorForm extends React.Component {
     // this.state.colorPicker could be called with object rest spread but it wouldn't update ColorPicker label in child component
     // since only an attribut of the object would change, not the object itself
     const { display, name, hex } = this.state.colorPicker
-    this.setState({
-      ...this.state,
-      colorPicker: {
-        display: display,
-        name: name,
-        label: this.props.colorList.find((color) => color.name === name).label[newLang],
-        hex: hex
-      }
-    })
+    if (display) {
+      this.setState({
+        ...this.state,
+        colorPicker: {
+          display: display,
+          name: name,
+          label: this.props.customizablesList.find((customizable) => customizable.name === name).label[newLang],
+          hex: hex
+        }
+      })
+    }
   }
 
   render () {
-    const { activeLang, showAdvancedOpt, colorList, isSaasInstance, dispatch } = this.props
+    const { activeLang, showAdvancedOpt, customizablesList, isSaasInstance, dispatch } = this.props
 
     return (
       <div className='form__wrapper'>
@@ -141,6 +143,8 @@ export class ColorForm extends React.Component {
 
         <div className='form'>
 
+          <div className='form__title'>{__('appTitle')}</div>
+
           <div className='form__lang'>
             <label htmlFor='langSelector'>
               { __('labelSelectLang') }
@@ -151,20 +155,26 @@ export class ColorForm extends React.Component {
             </select>
           </div>
 
-          <button id='resetColors' className='form__btn btn' onClick={this.handleOpenResetDialog} title={__('btnReset')}>
-            <i className='fa fa-lg fa-step-backward' />
+          <button id='buildColors' className='form__btnBuild btn' onClick={this.handleOpenBuildDialog} title={__('btnValidate')} >
+            <i className='fa fa-lg fa-gears' />
+            <br />{__('btnValidate')}
           </button>
 
-          <button id='buildColors' className='form__btn btn btnBuild' onClick={this.handleOpenBuildDialog} title={__('btnValidate')} >
-            <i className='fa fa-lg fa-gears' />
+          <button id='resetColors' className='form__btnReset btn btn-link' onClick={this.handleOpenResetDialog} title={__('btnReset')}>
+            <i className='fa fa-lg fa-undo' />{__('btnReset')}
           </button>
 
           <div className='clearfix' />
 
           <div className='form__input-all'>
-            { colorList.map((item, i) => !item.advancedOpt &&
-              <ColorItem colorItem={item} lang={activeLang} onOpenPicker={() => this.handleOpenPicker(item)} isOpen={this.state.openedColor === item.name} key={i} />)
-            }
+            { customizablesList.map((category, i) => (
+              <div className='form__input__category' key={i}>
+                <div className='form__input__category__title'>{category.label[activeLang]}</div>
+                { category.fields.map((item, i) =>
+                  <ColorItem colorItem={item} lang={activeLang} onOpenPicker={() => this.handleOpenPicker(item)} isOpen={this.state.openedColor === item.name} key={i} />
+                )}
+              </div>
+            ))}
           </div>
 
           { false && // remove this test to uncomment this block. I dont comment it so I dont have to also comment all the var used in it because standard.js would whine
@@ -178,7 +188,7 @@ export class ColorForm extends React.Component {
               </ReactCSSTransitionGroup>
 
               <div className='form__advancedopt__list'>
-                { showAdvancedOpt && colorList.map((item, i) => item.advancedOpt && <ColorItem colorItem={item} lang={activeLang} onOpenPicker={() => this.handleOpenPicker(item)} key={i} />) }
+                { showAdvancedOpt && customizablesList.map((item, i) => item.advancedOpt && <ColorItem colorItem={item} lang={activeLang} onOpenPicker={() => this.handleOpenPicker(item)} key={i} />) }
               </div>
             </div>
           }
@@ -187,7 +197,7 @@ export class ColorForm extends React.Component {
           <Dialog
             display={this.state.displayResetDialog}
             msg={__('dialogReset')}
-            onValidate={this.handleResetColor}
+            onValidate={this.handleResetCustomizables}
             onCancel={this.handleCloseDialog}
           />
           {/* Build Dialog */}
@@ -216,11 +226,11 @@ export class ColorForm extends React.Component {
 
 }
 
-const mapStateToProps = ({ lang, showAdvancedOpt, color, config: { isSaasInstance } }) => ({
+const mapStateToProps = ({ lang, showAdvancedOpt, customizables, config: { isSaasInstance } }) => ({
   showAdvancedOpt,
   isSaasInstance,
   activeLang: lang,
-  colorList: color
+  customizablesList: customizables
 })
 
 export default connect(mapStateToProps)(ColorForm)

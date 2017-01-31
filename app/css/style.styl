@@ -23,6 +23,11 @@ $formWidth = 300px
   max-height 100%
   padding 0 20px 20px 20px
   vertical-align top
+  &__title
+    padding 15px 0
+    font-size 18px
+    font-weight bold
+    text-align center
   &__wrapper
     display inline-block
     max-height 100%
@@ -67,6 +72,20 @@ $formWidth = 300px
     display inline-block
     width 100px
     vertical-align middle
+    &__category
+      position relative
+      &__title
+        font-size 16px
+        margin-top 30px
+        font-weight bold
+      &::after
+        content ''
+        position absolute
+        left l = 10px
+        bottom -10px
+        width $formWidth - 40 - (2*l) // 40 is for the padding left and right of .form
+        height 1px
+        background-color #ccc
     &__selector
       display inline-block
       width 70px
@@ -78,16 +97,8 @@ $formWidth = 300px
       font-family monospace
     &__wrapper
       position relative
-      padding 13px 0px 13px 3px
+      padding 5px 0px 5px 8px
       cursor pointer
-      &::after
-        content ''
-        position absolute
-        left l = 20px
-        bottom 0
-        width $formWidth - 40 - (2*l) // 40 is for the padding left and right of .form
-        height 1px
-        background-color #ccc
       &:last-child::after
         display none
       &.active
@@ -98,22 +109,23 @@ $formWidth = 300px
       width 24px
       height 24px
       vertical-align middle
-  &__btn
-    float left
-    width 40%
-    margin 10px 0px
-    padding 12px 0px
-    background-color #333
-    color #FFF
+  &__btnBuild
+    width 100%
+    margin 5px 0px
+    padding 8px 0px
     text-align center
     white-space normal
-    &:hover, &:focus
-      color #FFF
-    &.btnBuild
-      float right
-      background-color #fff
-      color #333
-      border 1px solid #333
+    background-color #fff
+    color #333
+    border 1px solid #555
+    &:hover
+      background-color #333
+      color #fff
+  &__btnReset
+    display block
+    margin 0 auto
+    i
+      margin-right 5px
   &__advancedopt
     padding 15px 0 15px 0px
     $btnToggleMarginLeft = 10px

@@ -12,20 +12,25 @@ import __ from '../trad.js'
 export class TabHandler extends React.Component {
 
   render () {
-    const { activeTab, urlTracimInstance, colorList, isSaasInstance, dispatch } = this.props
+    const { activeTab, urlTracimInstance, customizablesList, isSaasInstance, dispatch } = this.props
+
+    const mapTopLvlCustomizableData = []
+    customizablesList.forEach(category => category.fields.forEach(field => mapTopLvlCustomizableData.push(field)))
+
+    console.log(mapTopLvlCustomizableData)
 
     const mapColorForPreview = {
-      brandPrimary: colorList.find((item) => item.name === 'brand-primary').hex,
-      brandSecondary: colorList.find((item) => item.name === 'brand-secondary').hex,
-      brandSuccess: colorList.find((item) => item.name === 'brand-success').hex,
-      brandInfo: colorList.find((item) => item.name === 'brand-info').hex,
-      brandWarning: colorList.find((item) => item.name === 'brand-warning').hex,
-      brandDanger: colorList.find((item) => item.name === 'brand-danger').hex,
-      menuColor: colorList.find((item) => item.name === 'text-menu').hex,
-      menuColorHover: colorList.find((item) => item.name === 'text-menu:hover').hex,
-      menuColorBgHover: colorList.find((item) => item.name === 'text-menu-bg:hover').hex,
-      menuClickedColor: colorList.find((item) => item.name === 'text-menu-clicked').hex,
-      menuClickedColorBg: colorList.find((item) => item.name === 'text-menu-bg-clicked').hex
+      brandPrimary: mapTopLvlCustomizableData.find((item) => item.name === 'brand-primary').hex,
+      brandSecondary: mapTopLvlCustomizableData.find((item) => item.name === 'brand-secondary').hex,
+      // brandSuccess: mapTopLvlCustomizableData.find((item) => item.name === 'brand-success').hex,
+      // brandInfo: mapTopLvlCustomizableData.find((item) => item.name === 'brand-info').hex,
+      // brandWarning: mapTopLvlCustomizableData.find((item) => item.name === 'brand-warning').hex,
+      // brandDanger: mapTopLvlCustomizableData.find((item) => item.name === 'brand-danger').hex,
+      menuColor: mapTopLvlCustomizableData.find((item) => item.name === 'text-menu').hex,
+      menuColorHover: mapTopLvlCustomizableData.find((item) => item.name === 'text-menu:hover').hex,
+      menuColorBgHover: mapTopLvlCustomizableData.find((item) => item.name === 'text-menu-bg:hover').hex,
+      menuClickedColor: mapTopLvlCustomizableData.find((item) => item.name === 'text-menu-clicked').hex,
+      menuClickedColorBg: mapTopLvlCustomizableData.find((item) => item.name === 'text-menu-bg-clicked').hex
     }
 
     return (
@@ -55,8 +60,8 @@ export class TabHandler extends React.Component {
   }
 }
 
-const mapStateToProps = ({ lang, activeTab, config: { urlTracimInstance, isSaasInstance }, color }) => ({
-  lang, activeTab, urlTracimInstance, isSaasInstance, colorList: color
+const mapStateToProps = ({ lang, activeTab, config: { urlTracimInstance, isSaasInstance }, customizables }) => ({
+  lang, activeTab, urlTracimInstance, isSaasInstance, customizablesList: customizables
 })
 
 export default connect(mapStateToProps)(TabHandler)

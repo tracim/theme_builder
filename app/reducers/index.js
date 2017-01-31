@@ -4,10 +4,10 @@ import lang from './lang.js'
 import showAdvancedOpt from './advancedOpt.js'
 import activeTab from './tab.js'
 import config from './config.js'
-import color from './color.js'
+import customizables from './customizables.js'
 
 const rootReducer = combineReducers({
-  isFetching, lang, showAdvancedOpt, activeTab, config, color
+  isFetching, lang, showAdvancedOpt, activeTab, config, customizables
 })
 
 export default rootReducer

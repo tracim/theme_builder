@@ -20,28 +20,28 @@ export function Preview (props) {
     styleContentHeader: {
       backgroundColor: propColor.brandSecondary
     },
-    styleBtnPrimary: {
-      borderColor: propColor.brandPrimary,
-      backgroundColor: propColor.brandPrimary
-    },
-    styleBtnSuccess: {
-      borderColor: propColor.brandSuccess,
-      backgroundColor: propColor.brandSuccess
-    },
-    styleBtnInfo: {
-      borderColor: propColor.brandInfo,
-      backgroundColor: propColor.brandInfo
-    },
-    styleBtnWarning: {
-      borderColor: propColor.brandWarning,
-      backgroundColor: propColor.brandWarning
-    },
-    styleBtnDanger: {
-      borderColor: propColor.brandDanger,
-      backgroundColor: propColor.brandDanger
-    },
-    styleBtnDefault: {},
-    styleBtnLink: {},
+    // styleBtnPrimary: {
+    //   borderColor: propColor.brandPrimary,
+    //   backgroundColor: propColor.brandPrimary
+    // },
+    // styleBtnSuccess: {
+    //   borderColor: propColor.brandSuccess,
+    //   backgroundColor: propColor.brandSuccess
+    // },
+    // styleBtnInfo: {
+    //   borderColor: propColor.brandInfo,
+    //   backgroundColor: propColor.brandInfo
+    // },
+    // styleBtnWarning: {
+    //   borderColor: propColor.brandWarning,
+    //   backgroundColor: propColor.brandWarning
+    // },
+    // styleBtnDanger: {
+    //   borderColor: propColor.brandDanger,
+    //   backgroundColor: propColor.brandDanger
+    // },
+    // styleBtnDefault: {},
+    // styleBtnLink: {},
     styleMenuColor: {
       color: propColor.menuColor
     },
