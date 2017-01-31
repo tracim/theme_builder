@@ -191,6 +191,7 @@ export class ColorForm extends React.Component {
               onChangeColor={this.handleChangeColor}
               onChangeColorComplete={this.handleChangeColorComplete}
               onKeyPress={this.handleKeypressPicker}
+              setInputFocus
             />
           }
         </ReactCSSTransitionGroup>
