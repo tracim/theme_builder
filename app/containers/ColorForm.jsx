@@ -63,11 +63,13 @@ export class ColorForm extends React.Component {
     this.setState({ ...this.state, colorPicker: {...this.state.colorPicker, name, hex, display: true} })
   }
 
+  // handle for keyboard keys (13: enter)
   handleKeypressPicker = (e) => {
     if (e.keyCode === 13) this.handleClosePicker()
   }
 
-  // the syntaxe bellow is viable thx to babel plugin transform-class-properties. It avoids having to bind 'this' to the function in the class' constructor
+  // the syntaxe bellow ("fct name = () => {...}") is viable thx to babel plugin transform-class-properties.
+  // It avoids having to bind 'this' to the function in the class' constructor
   handleBuildColor = () => {
     // if (self.fetch) console.log('fetch is native')
     // else console.log('fetch is polyfill')
@@ -99,8 +101,21 @@ export class ColorForm extends React.Component {
   }
 
   handleLangSelection = (e) => {
-    e.persist()
-    this.props.dispatch(changeLang(e.target.value))
+    const newLang = e.target.value // save the value because dispatch is async et event will loose its value
+    this.props.dispatch(changeLang(newLang))
+
+    // this.state.colorPicker could be called with object rest spread but it wouldn't update ColorPicker label in child component
+    // since only an attribut of the object would change, not the object itself
+    const { display, name, hex } = this.state.colorPicker
+    this.setState({
+      ...this.state,
+      colorPicker: {
+        display: display,
+        name: name,
+        label: this.props.colorList.find((color) => color.name === name).label[newLang],
+        hex: hex
+      }
+    })
   }
 
   render () {
