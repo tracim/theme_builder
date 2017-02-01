@@ -17,8 +17,6 @@ export class TabHandler extends React.Component {
     const mapTopLvlCustomizableData = []
     customizablesList.forEach(category => category.fields.forEach(field => mapTopLvlCustomizableData.push(field)))
 
-    console.log(mapTopLvlCustomizableData)
-
     const mapColorForPreview = {
       brandPrimary: mapTopLvlCustomizableData.find((item) => item.name === 'brand-primary').hex,
       brandSecondary: mapTopLvlCustomizableData.find((item) => item.name === 'brand-secondary').hex,

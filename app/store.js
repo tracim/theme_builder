@@ -6,21 +6,21 @@ import { defaultStore } from './defaultStore.js'
 import { fetchConfig } from './action-creators.js'
 
 // const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-// const configPath = document.getElementById('content').getAttribute('configPath')
+// const configEndPoint = document.getElementById('content').getAttribute('configEndPoint')
 // export const store = (function () {
-//   if (configPath !== null) {
+//   if (configEndPoint !== null) {
 //     const middleware = applyMiddleware(thunkMiddleware, createLogger())
 //     return createStore(rootReducer, compose(middleware, reduxDevTools || (f => f)))
 //   } else {
 //     return createStore(rootReducer, defaultStore, reduxDevTools)
 //   }
 // })()
-// configPath !== null && store.dispatch(fetchConfig(configPath))
+// configEndPoint !== null && store.dispatch(fetchConfig(configEndPoint))
 
-const configPath = document.getElementById('content').getAttribute('configPath')
+const configEndPoint = document.getElementById('content').getAttribute('configEndPoint')
 
 export const store = ((middleware, reduxDevTools) =>
-  configPath !== ''
+  configEndPoint !== ''
     ? createStore(rootReducer, compose(middleware, reduxDevTools || (f => f)))
     : createStore(rootReducer, defaultStore, reduxDevTools)
 )(
@@ -28,4 +28,4 @@ export const store = ((middleware, reduxDevTools) =>
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-configPath !== '' && store.dispatch(fetchConfig(configPath))
+configEndPoint !== '' && store.dispatch(fetchConfig(configEndPoint))
