@@ -1,4 +1,4 @@
-const state_color_test = [{
+const state_customizables_test = [{
     label: {
       fr: 'Design général',
       en: 'General design'
@@ -74,4 +74,4 @@ const state_color_test = [{
       advancedOpt: false
     }]
   }]
-export default state_color_test
+export default state_customizables_test

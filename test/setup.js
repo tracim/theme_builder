@@ -11,7 +11,7 @@ global.document = jsdom(`
 <html>
   <head><meta charset="utf-8" /></head>
   <body>
-    <div id='content' class='full-height' configPath=''></div>
+    <div id='content' class='full-height' configEndPoint=''></div>
     <script src='bundle.js'></script>
   </body>
 </html>`)
