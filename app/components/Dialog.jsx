@@ -4,7 +4,7 @@ import __ from '../trad.js'
 export function Dialog (props) {
   return (
     <div className='modal' role='dialog' style={{display: props.display ? 'block' : 'none'}}>
-      <div className='modal-dialog modal-lg' role='document'>
+      <div className='modal-dialog modal-md' role='document'>
         <div className='modal-content'>
           <div className='modal-header'>
             <button type='button' className='close' data-dismiss='modal' aria-label='Close' onClick={props.onCancel}>

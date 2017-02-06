@@ -25,7 +25,7 @@ const tradList = {
   },
   btnValidate: {
     fr: 'Générer le thème',
-    en: 'Generate the theme'
+    en: 'Generate theme'
   },
   btnAdvOptClose: {
     fr: ' Plus de couleurs',
@@ -47,13 +47,13 @@ const tradList = {
     fr: 'Etes-vous sur ?',
     en: 'Are you sure ?'
   },
-  dialogBuild: {
-    fr: 'Vous êtes sur le point de générer et télécharger le nouveau thème (fichier css)',
-    en: 'You are about to generate and download the new theme (css file)'
-  },
+  // dialogBuild: { // Côme - 2017/02/06 - deprecated, no modal for mode !saas
+  //   fr: 'Vous êtes sur le point de générer et télécharger le nouveau thème (fichier css)',
+  //   en: 'You are about to generate and download the new theme (css file)'
+  // },
   dialogBuildSaas: {
-    fr: 'Vous êtes sur le point de générer et appliquer le theme à votre instance de Tracim',
-    en: 'You are about to generate and apply the theme to your Tracim instance'
+    fr: `Vous êtes sur le point d'appliquer le nouveau thème à votre instance`,
+    en: 'You are about to apply the theme to your instance'
   },
   dialogBtnValidate: {
     fr: 'Valider',

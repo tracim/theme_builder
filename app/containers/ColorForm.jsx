@@ -39,7 +39,10 @@ export class ColorForm extends React.Component {
   handleCloseDialog = () => this.setState({ ...this.state, displayHelpDialog: false, displayResetDialog: false, displayBuildDialog: false })
   handleOpenHelpDialog = () => this.setState({ ...this.state, displayHelpDialog: true, displayResetDialog: false, displayBuildDialog: false })
   handleOpenResetDialog = () => this.setState({ ...this.state, displayHelpDialog: false, displayResetDialog: true, displayBuildDialog: false })
-  handleOpenBuildDialog = () => this.setState({ ...this.state, displayHelpDialog: false, displayResetDialog: false, displayBuildDialog: true })
+  handleOpenBuildDialog = () => {
+    if (this.props.isSaasInstance) this.setState({ ...this.state, displayHelpDialog: false, displayResetDialog: false, displayBuildDialog: true })
+    else this.handleBuildColor()
+  }
 
   handleOpenPicker = ({name, label, hex}) => {
     const updatedColorPicker = name === this.state.colorPicker.name
@@ -121,7 +124,7 @@ export class ColorForm extends React.Component {
   }
 
   render () {
-    const { activeLang, showAdvancedOpt, customizablesList, isSaasInstance, dispatch } = this.props
+    const { activeLang, showAdvancedOpt, customizablesList, dispatch } = this.props
 
     return (
       <div className='form__wrapper'>
@@ -203,7 +206,7 @@ export class ColorForm extends React.Component {
           {/* Build Dialog */}
           <Dialog
             display={this.state.displayBuildDialog}
-            msg={isSaasInstance ? __('dialogBuild') : __('dialogBuildSaas')}
+            msg={__('dialogBuildSaas')}
             onValidate={this.handleBuildColor}
             onCancel={this.handleCloseDialog}
           />
