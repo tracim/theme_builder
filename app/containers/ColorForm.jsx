@@ -81,7 +81,7 @@ export class ColorForm extends React.Component {
     this.handleCloseDialog()
 
     const varList = {}
-    this.props.customizablesList.forEach((item) => (varList[item.name] = item.hex))
+    this.props.customizablesList.forEach(category => category.fields.forEach(field => (varList[field.name] = field.hex)))
 
     fetch('http://theme.tracim.org/api/generate-css', {
       method: 'POST',
