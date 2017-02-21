@@ -23,3 +23,9 @@ npm run build
 #### To run the app
 Edit the attribut configPath from index.html to change the url to get the app configuration
 Open /dist/index.html in a web server
+
+## Test
+### Run local test
+```
+npm run test:local
+```
