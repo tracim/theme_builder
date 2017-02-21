@@ -18,7 +18,7 @@ npm install
 ## Build
 ### Build all sources
 ```
-npm build
+npm run build
 ```
 
 ### Open the app
