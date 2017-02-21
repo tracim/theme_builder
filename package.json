@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=development && webpack --watch",
     "servdev": "webpack-dev-server --port 3031 --watch --colors --inline --hot --content-base dist/",
-    "build": "NODE_ENV=production webpack -p",
+    "build": "NODE_ENV=production && webpack -p",
     "test": "mocha test/**/*.spec.js -R xunit test/ > test-reports.xml",
     "test:local": "mocha test/**/*.spec.js",
     "deploy": "surge -p dist/ --domain tracim-theme-builder.surge.sh"
