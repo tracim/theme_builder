@@ -1,7 +1,7 @@
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 # Tracim Theme Builder
-Allow to customize the design of a Tracim instance
+Allows to customize the design of a Tracim instance
 
 ## Setup
 ### Node js
@@ -20,9 +20,6 @@ npm install
 ```
 npm run build
 ```
-
-### Open the app
-
-Open dist/index.html throught a webserver (apache or nginx)
-
+#### To run the app
 Edit the attribut configPath from index.html to change the url to get the app configuration
+Open /dist/index.html in a web server
